@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Al-Salam Scouting Groups (SSG) — Building future leaders with values since 1977. More than scouting — a journey of leadership, values, responsibility, and positive impact.">
+    <meta name="keywords" content="Al-Salam Scouting Groups, SSG, scouting, youth leadership, empowerment, community impact, Egypt, Rehab Sporting Club">
+    <meta name="author" content="Al-Salam Scouting Groups">
+    <meta name="theme-color" content="#14532D">
+    <meta property="og:title" content="SSG — Building Future Leaders With Values">
+    <meta property="og:description" content="More than scouting. A journey of leadership, values, responsibility, and positive impact.">
+    <meta property="og:type" content="website">
+    <title>Al-Salam Scouting Groups — Building Future Leaders With Values</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'scout': { 900:'#14532D', 800:'#166534', 700:'#15803D', 600:'#16A34A', 500:'#22C55E', 400:'#4ADE80', 300:'#86EFAC' },
+                        'emerald': { 600:'#059669', 500:'#10B981', 400:'#34D399' },
+                        'gold': { 600:'#CA8A04', 500:'#EAB308', 400:'#FACC15', 300:'#FDE047' },
+                        'dark': { 900:'#0F172A', 800:'#1E293B', 700:'#334155', 600:'#475569' },
+                        'cream': '#FAF7F2',
+                    },
+                    fontFamily: { 'display':['Manrope','sans-serif'], 'body':['Inter','sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<!-- NOTE: no overflow-hidden here — JS controls overflow during load via inline style -->
+<body class="bg-dark-900 text-cream font-body" style="overflow: hidden;">
+
+    <!-- ========== LOADING SCREEN ========== -->
+    <div id="loading-screen" class="fixed inset-0 z-[10000] flex flex-col items-center justify-center" style="background: radial-gradient(ellipse at center, #1E293B 0%, #0F172A 70%)">
+        <img src="assets/images/ssg-logo.png" alt="SSG Logo" class="loading-logo mb-8">
+        <h2 class="loading-text font-display text-lg md:text-xl tracking-[0.3em] uppercase text-cream/60 mb-2">Al-Salam Scouting Groups</h2>
+        <p class="text-cream/25 text-sm tracking-widest mb-8 font-body">SSG Partnership & Sponsorship Portfolio</p>
+        <div class="loading-bar w-48 h-[2px] bg-dark-700/50 rounded-full overflow-hidden">
+            <div class="loading-bar-fill h-full bg-gradient-to-r from-scout-500 via-emerald-500 to-gold-400 rounded-full" style="width: 0%"></div>
+        </div>
+    </div>
+
+    <!-- ========== SCROLL PROGRESS ========== -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-scout-500 via-gold-400 to-scout-500 z-[9999]" style="width: 0%"></div>
+
+    <!-- ========== PARTICLES ========== -->
+    <canvas id="particles-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-[1]"></canvas>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav id="main-nav" class="fixed top-0 left-0 right-0 z-[100] transition-all duration-500 py-4 md:py-5">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <a href="#hero" class="nav-logo flex items-center gap-3 group">
+                <img src="assets/images/ssg-logo.png" alt="SSG" class="w-9 h-9 object-contain transition-transform duration-300 group-hover:scale-110">
+                <span class="font-display font-bold text-lg tracking-wider hidden md:block">SSG</span>
+            </a>
+            <div class="hidden lg:flex items-center gap-1">
+                <a href="#who-we-are" class="nav-link" data-section="#who-we-are">About</a>
+                <a href="#impact" class="nav-link" data-section="#impact">Impact</a>
+                <a href="#committees" class="nav-link" data-section="#committees">Structure</a>
+                <a href="#experiences" class="nav-link" data-section="#experiences">Experiences</a>
+                <a href="#education" class="nav-link" data-section="#education">Education</a>
+                <a href="#partnerships" class="nav-link" data-section="#partnerships">Partners</a>
+                <a href="#contact" class="nav-link" data-section="#contact">Contact</a>
+            </div>
+            <button class="nav-toggle lg:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu">
+                <span class="w-6 h-[2px] bg-cream transition-all duration-300 origin-center"></span>
+                <span class="w-6 h-[2px] bg-cream transition-all duration-300"></span>
+                <span class="w-4 h-[2px] bg-cream transition-all duration-300 ml-auto origin-center"></span>
+            </button>
+        </div>
+        <div class="mobile-menu hidden lg:hidden absolute top-full left-0 right-0 bg-dark-900/95 backdrop-blur-xl border-t border-cream/5 py-6 px-6">
+            <div class="flex flex-col gap-4">
+                <a href="#who-we-are" class="nav-link text-lg" data-section="#who-we-are">About</a>
+                <a href="#impact" class="nav-link text-lg" data-section="#impact">Impact</a>
+                <a href="#committees" class="nav-link text-lg" data-section="#committees">Structure</a>
+                <a href="#experiences" class="nav-link text-lg" data-section="#experiences">Experiences</a>
+                <a href="#education" class="nav-link text-lg" data-section="#education">Education</a>
+                <a href="#partnerships" class="nav-link text-lg" data-section="#partnerships">Partners</a>
+                <a href="#contact" class="nav-link text-lg" data-section="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Cinematic hero background image -->
+        <div class="hero-bg-image">
+            <img src="assets/images/optimized/hero-main.jpg" alt="SSG Scout carrying the Elsalam flag" loading="eager">
+        </div>
+
+        <div class="ambient-glow absolute top-[15%] left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-scout-600/15 rounded-full blur-[180px] pointer-events-none z-[2]"></div>
+        <div class="ambient-glow absolute bottom-[20%] right-[15%] w-[400px] h-[400px] bg-gold-400/8 rounded-full blur-[140px] pointer-events-none z-[2]"></div>
+
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+            <img src="assets/images/ssg-logo.png" alt="Al-Salam Scouting Groups" class="hero-logo mx-auto object-contain opacity-0">
+
+            <p class="hero-desc font-body text-sm md:text-base text-gold-400/70 tracking-[0.25em] uppercase mb-6 opacity-0">
+                SSG Partnership & Sponsorship Portfolio
+            </p>
+
+            <h1 class="hero-title font-display font-800 leading-[0.95] mb-6 md:mb-8 opacity-0">
+                <span class="block text-cream drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]">Building Future</span>
+                <span class="block bg-gradient-to-r from-scout-400 via-gold-400 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]">Leaders With Values</span>
+            </h1>
+
+            <p class="hero-desc font-body text-lg md:text-xl lg:text-2xl text-cream/65 max-w-2xl mx-auto leading-relaxed mb-12 opacity-0 drop-shadow-[0_1px_8px_rgba(0,0,0,0.4)]">
+                More than scouting. A journey of leadership, values, responsibility, and positive impact.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0 hero-cta">
+                <a href="#who-we-are" class="cta-button px-8 py-4 rounded-full font-display font-semibold text-sm tracking-wider uppercase">Discover Our Story</a>
+                <a href="#partnerships" class="px-8 py-4 rounded-full border border-cream/15 font-display font-medium text-sm tracking-wider uppercase text-cream/70 hover:border-scout-400/40 hover:text-scout-400 transition-all duration-400 backdrop-blur-sm bg-dark-900/30">Partner With Us</a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0">
+            <span class="text-cream/25 text-xs tracking-[0.2em] uppercase font-display">Scroll</span>
+            <div class="w-[1px] h-12 bg-gradient-to-b from-cream/25 to-transparent relative overflow-hidden">
+                <div class="absolute inset-x-0 h-4 bg-scout-400/50 animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== WHO WE ARE ========== -->
+    <section id="who-we-are" class="relative py-28 md:py-36 overflow-hidden">
+        <div class="ambient-glow absolute top-0 right-0 w-[450px] h-[450px] bg-scout-500/8 rounded-full blur-[150px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 md:mb-24">
+                <span class="section-label reveal">Our Identity</span>
+                <h2 class="section-title reveal">Shaping Character<br>Since <span class="text-gold-400">1977</span></h2>
+                <p class="section-subtitle reveal max-w-3xl mx-auto">Founded in 1977, Al-Salam Scouting Groups has been helping generations of young people grow into confident leaders, compassionate individuals, and active members of their communities.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center mb-20">
+                <div class="reveal">
+                    <h3 class="font-display text-xl md:text-2xl font-bold mb-8 leading-snug text-cream/90">Today, SSG continues to create <span class="text-scout-400">meaningful experiences</span> through:</h3>
+                    <div class="space-y-3.5">
+                        <div class="flex items-center gap-4 group p-3 rounded-xl hover:bg-dark-800/50 transition-colors duration-300"><div class="w-9 h-9 rounded-lg bg-scout-900/60 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-scout-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 21h18M3 21l6-6m0 0l4-8 4 8m-8 0h8"/></svg></div><span class="text-cream/70 font-medium">Camps</span></div>
+                        <div class="flex items-center gap-4 group p-3 rounded-xl hover:bg-dark-800/50 transition-colors duration-300"><div class="w-9 h-9 rounded-lg bg-scout-900/60 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg></div><span class="text-cream/70 font-medium">Leadership Programs</span></div>
+                        <div class="flex items-center gap-4 group p-3 rounded-xl hover:bg-dark-800/50 transition-colors duration-300"><div class="w-9 h-9 rounded-lg bg-scout-900/60 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-scout-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13"/></svg></div><span class="text-cream/70 font-medium">Educational Activities</span></div>
+                        <div class="flex items-center gap-4 group p-3 rounded-xl hover:bg-dark-800/50 transition-colors duration-300"><div class="w-9 h-9 rounded-lg bg-scout-900/60 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg></div><span class="text-cream/70 font-medium">Ceremonies</span></div>
+                        <div class="flex items-center gap-4 group p-3 rounded-xl hover:bg-dark-800/50 transition-colors duration-300"><div class="w-9 h-9 rounded-lg bg-scout-900/60 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-scout-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><span class="text-cream/70 font-medium">Scouting Adventures</span></div>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <!-- Real camp group photo at ancient temple -->
+                    <div class="section-cover aspect-photo rounded-2xl mb-8">
+                        <img data-src="assets/images/optimized/camp-aswan-1.jpg" alt="SSG scouts at Aswan temple" class="lazy-image" loading="lazy">
+                    </div>
+                    <div class="glass-card p-8 md:p-10">
+                        <p class="font-display text-lg md:text-xl font-bold leading-snug text-cream/80 mb-6">We help young people grow into:</p>
+                        <div class="space-y-5">
+                            <div class="flex items-start gap-3"><span class="text-scout-400 text-lg mt-0.5 font-bold">→</span><p class="text-cream/60 text-base"><span class="text-cream/90 font-semibold">Confident leaders</span> who inspire those around them</p></div>
+                            <div class="flex items-start gap-3"><span class="text-gold-400 text-lg mt-0.5 font-bold">→</span><p class="text-cream/60 text-base"><span class="text-cream/90 font-semibold">Compassionate individuals</span> who serve with heart</p></div>
+                            <div class="flex items-start gap-3"><span class="text-emerald-400 text-lg mt-0.5 font-bold">→</span><p class="text-cream/60 text-base"><span class="text-cream/90 font-semibold">Active members</span> of their communities</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal max-w-3xl mx-auto text-center"><div class="quote-block"><p class="font-display text-xl md:text-2xl font-semibold leading-snug text-cream/75 italic">"We help shape who young people <span class="text-gold-400">become</span>."</p></div></div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- ========== WHY WE EXIST ========== -->
+    <section id="why-we-exist" class="relative py-28 md:py-36 overflow-hidden">
+        <div class="ambient-glow absolute bottom-0 left-[20%] w-[500px] h-[500px] bg-gold-400/6 rounded-full blur-[160px] pointer-events-none"></div>
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 md:mb-20"><span class="section-label reveal">Our Purpose</span><h2 class="section-title reveal">Raising Generations<br>With <span class="text-gold-400">Values</span></h2></div>
+            <div class="space-y-20 md:space-y-28">
+                <div class="reveal max-w-4xl mx-auto text-center"><p class="font-display text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.2] text-cream/85">Our mission is simple: to help raise generations with <span class="text-gold-400">kind hearts</span>, <span class="text-scout-400">strong values</span>, leadership, responsibility, and <span class="bg-gradient-to-r from-gold-400 to-emerald-400 bg-clip-text text-transparent">positive impact</span>.</p></div>
+                <div class="reveal grid md:grid-cols-3 gap-6 md:gap-8">
+                    <div class="glass-card p-7 md:p-9 text-center group hover:border-scout-500/20 transition-all duration-400"><div class="w-14 h-14 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-scout-900/80 to-dark-800/80 flex items-center justify-center"><svg class="w-7 h-7 text-scout-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></div><h3 class="font-display font-bold text-lg mb-3">Confidence</h3><p class="text-cream/50 leading-relaxed text-sm">Some children discover confidence for the first time around a campfire.</p></div>
+                    <div class="glass-card p-7 md:p-9 text-center group hover:border-gold-400/20 transition-all duration-400"><div class="w-14 h-14 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-scout-900/80 to-dark-800/80 flex items-center justify-center"><svg class="w-7 h-7 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg></div><h3 class="font-display font-bold text-lg mb-3">Voice</h3><p class="text-cream/50 leading-relaxed text-sm">Some discover that their voice matters.</p></div>
+                    <div class="glass-card p-7 md:p-9 text-center group hover:border-emerald-400/20 transition-all duration-400"><div class="w-14 h-14 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-scout-900/80 to-dark-800/80 flex items-center justify-center"><svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><h3 class="font-display font-bold text-lg mb-3">Leadership</h3><p class="text-cream/50 leading-relaxed text-sm">Some discover they are capable of leading others.</p></div>
+                </div>
+                <div class="reveal max-w-3xl mx-auto text-center"><div class="quote-block"><p class="font-display text-xl md:text-2xl font-semibold leading-snug text-cream/75 italic">"We prepare them for <span class="text-gold-400">life</span>."</p></div></div>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- ========== IMPACT IN NUMBERS ========== -->
+    <section id="impact" class="relative py-28 md:py-36 overflow-hidden">
+        <div class="ambient-glow absolute top-[30%] right-0 w-[400px] h-[400px] bg-scout-500/8 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="ambient-glow absolute bottom-0 left-[10%] w-[350px] h-[350px] bg-gold-400/6 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 md:mb-20"><span class="section-label reveal">Measurable Impact</span><h2 class="section-title reveal">Impact in Numbers</h2></div>
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto mb-16">
+                <div class="stat-card reveal glass-card p-6 md:p-8 text-center group"><div class="text-3xl md:text-4xl lg:text-5xl font-display font-800 text-gold-400 mb-2"><span class="counter" data-target="250" data-suffix="+">0</span></div><p class="text-cream/45 font-display font-medium tracking-wide uppercase text-xs">Active Scouts & Leaders</p></div>
+                <div class="stat-card reveal glass-card p-6 md:p-8 text-center group"><div class="text-3xl md:text-4xl lg:text-5xl font-display font-800 text-gold-400 mb-2"><span class="counter" data-target="900" data-suffix="+">0</span></div><p class="text-cream/45 font-display font-medium tracking-wide uppercase text-xs">Ceremony Attendees</p></div>
+                <div class="stat-card reveal glass-card p-6 md:p-8 text-center group"><div class="text-3xl md:text-4xl lg:text-5xl font-display font-800 text-gold-400 mb-2"><span class="counter" data-target="8000" data-suffix="+">0</span></div><p class="text-cream/45 font-display font-medium tracking-wide uppercase text-xs">Facebook Community</p></div>
+                <div class="stat-card reveal glass-card p-6 md:p-8 text-center group"><div class="text-3xl md:text-4xl lg:text-5xl font-display font-800 text-gold-400 mb-2"><span class="counter" data-target="1000" data-suffix="+">0</span></div><p class="text-cream/45 font-display font-medium tracking-wide uppercase text-xs">Instagram Followers</p></div>
+                <div class="stat-card reveal glass-card p-6 md:p-8 text-center group"><div class="text-3xl md:text-4xl lg:text-5xl font-display font-800 text-scout-400 mb-2"><span class="counter" data-target="7">0</span></div><p class="text-cream/45 font-display font-medium tracking-wide uppercase text-xs">Developmental Stages</p></div>
+                <div class="stat-card reveal glass-card p-6 md:p-8 text-center group"><div class="text-3xl md:text-4xl lg:text-5xl font-display font-800 text-scout-400 mb-2"><span class="counter" data-target="5">0</span></div><p class="text-cream/45 font-display font-medium tracking-wide uppercase text-xs">Specialized Committees</p></div>
+            </div>
+            <div class="reveal max-w-3xl mx-auto text-center">
+                <p class="font-display text-lg text-cream/50 mb-6">But the real impact is found in:</p>
+                <div class="flex flex-wrap justify-center gap-3 mb-10">
+                    <span class="px-4 py-2 rounded-full bg-dark-800/60 border border-scout-500/15 text-cream/65 font-display text-sm font-medium">Confidence discovered</span>
+                    <span class="px-4 py-2 rounded-full bg-dark-800/60 border border-scout-500/15 text-cream/65 font-display text-sm font-medium">Friendships created</span>
+                    <span class="px-4 py-2 rounded-full bg-gold-400/8 border border-gold-400/15 text-gold-400/80 font-display text-sm font-medium">Future leaders shaped</span>
+                </div>
+                <div class="quote-block"><p class="font-display text-xl md:text-2xl font-semibold leading-snug text-cream/75 italic">"Behind every number is a <span class="text-gold-400">story</span>."</p></div>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- ========== STRUCTURE ========== -->
+    <section id="structure" class="relative py-28 md:py-36 overflow-hidden">
+        <div class="ambient-glow absolute top-[20%] left-[30%] w-[400px] h-[400px] bg-scout-500/8 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16"><span class="section-label reveal">Governance</span><h2 class="section-title reveal">Structure Creates <span class="text-gold-400">Impact</span></h2><p class="section-subtitle reveal max-w-3xl mx-auto">Every experience is supported by structured leadership, trained teams, operational systems, and strong coordination.</p></div>
+            <div class="flex flex-col items-center gap-5 reveal mb-14">
+                <div class="org-node glass-card p-5 md:p-7 text-center min-w-[220px] border-gold-400/15 glow-card"><h3 class="font-display font-bold text-base text-gold-400">Group Leader</h3><p class="text-cream/35 text-xs mt-1">Strategic Direction</p></div>
+                <div class="org-line w-[1px] h-5 bg-gradient-to-b from-gold-400/30 to-scout-500/20"></div>
+                <div class="org-node glass-card p-4 md:p-5 text-center min-w-[200px]"><h3 class="font-display font-semibold text-sm">Assistant Group Leader</h3><p class="text-cream/35 text-xs mt-1">Operational Leadership</p></div>
+                <div class="org-line w-[1px] h-5 bg-gradient-to-b from-scout-500/20 to-transparent"></div>
+            </div>
+            <div class="reveal mb-14">
+                <h3 class="text-center font-display text-lg font-bold mb-6 text-cream/60"><span class="text-scout-400">7</span> Developmental Stages</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 max-w-3xl mx-auto">
+                    <div class="glass-card p-3 md:p-4 text-center hover:border-scout-400/20 transition-all duration-300"><div class="text-xl mb-1">🦫</div><h4 class="font-display font-semibold text-xs">Beavers</h4></div>
+                    <div class="glass-card p-3 md:p-4 text-center hover:border-scout-400/20 transition-all duration-300"><div class="text-xl mb-1">🐺</div><h4 class="font-display font-semibold text-xs">Cub Scouts</h4></div>
+                    <div class="glass-card p-3 md:p-4 text-center hover:border-scout-400/20 transition-all duration-300"><div class="text-xl mb-1">⚜️</div><h4 class="font-display font-semibold text-xs">Scouts</h4></div>
+                    <div class="glass-card p-3 md:p-4 text-center hover:border-scout-400/20 transition-all duration-300"><div class="text-xl mb-1">🏔️</div><h4 class="font-display font-semibold text-xs">Senior Scouts</h4></div>
+                    <div class="glass-card p-3 md:p-4 text-center hover:border-gold-400/15 transition-all duration-300"><div class="text-xl mb-1">🌸</div><h4 class="font-display font-semibold text-xs">Brownies</h4></div>
+                    <div class="glass-card p-3 md:p-4 text-center hover:border-gold-400/15 transition-all duration-300"><div class="text-xl mb-1">🌿</div><h4 class="font-display font-semibold text-xs">Girl Guides</h4></div>
+                    <div class="glass-card p-3 md:p-4 text-center hover:border-gold-400/15 transition-all duration-300 col-span-2 sm:col-span-1"><div class="text-xl mb-1">🌟</div><h4 class="font-display font-semibold text-xs">Senior Girl Guides</h4></div>
+                </div>
+            </div>
+            <div class="reveal mb-12">
+                <h3 class="text-center font-display text-lg font-bold mb-6 text-cream/60"><span class="text-gold-400">5</span> Specialized Committees</h3>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 max-w-3xl mx-auto">
+                    <div class="glass-card p-3 md:p-4 text-center hover:border-scout-400/20 transition-all duration-300"><div class="text-xl mb-1">📋</div><h4 class="font-display font-semibold text-xs">Programs</h4></div>
+                    <div class="glass-card p-3 md:p-4 text-center hover:border-scout-400/20 transition-all duration-300"><div class="text-xl mb-1">🎓</div><h4 class="font-display font-semibold text-xs">Training</h4></div>
+                    <div class="glass-card p-3 md:p-4 text-center hover:border-scout-400/20 transition-all duration-300"><div class="text-xl mb-1">🎬</div><h4 class="font-display font-semibold text-xs">Media</h4></div>
+                    <div class="glass-card p-3 md:p-4 text-center hover:border-scout-400/20 transition-all duration-300"><div class="text-xl mb-1">📜</div><h4 class="font-display font-semibold text-xs">Secretary</h4></div>
+                    <div class="glass-card p-3 md:p-4 text-center hover:border-scout-400/20 transition-all duration-300 col-span-2 md:col-span-1"><div class="text-xl mb-1">⚙️</div><h4 class="font-display font-semibold text-xs">Logistics</h4></div>
+                </div>
+            </div>
+            <div class="reveal max-w-3xl mx-auto text-center"><div class="quote-block"><p class="font-display text-xl md:text-2xl font-semibold leading-snug text-cream/75 italic">"Great experiences are built through <span class="text-gold-400">teamwork and care</span>."</p></div></div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- ========== COMMITTEES ========== -->
+    <section id="committees" class="relative py-28 md:py-36 overflow-hidden">
+        <div class="ambient-glow absolute bottom-[30%] right-0 w-[400px] h-[400px] bg-emerald-500/6 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 md:mb-20"><span class="section-label reveal">The Engine</span><h2 class="section-title reveal">Our Committees</h2><p class="section-subtitle reveal max-w-3xl mx-auto">Five specialized committees working in harmony — each one a powerhouse of expertise, creativity, and dedication.</p></div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="committee-card reveal glass-card p-7 md:p-9 group relative overflow-hidden"><div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-scout-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-scout-900/70 to-dark-800/70 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"><svg class="w-6 h-6 text-scout-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div><h3 class="font-display font-bold text-lg mb-2 group-hover:text-scout-400 transition-colors duration-300">Programs</h3><p class="text-cream/45 leading-relaxed text-sm mb-4">Designs camps, ceremonies, educational activities, leadership experiences, and meaningful moments. Combining fun, teamwork, leadership, exploration, and personal growth.</p><p class="text-cream/30 italic text-xs border-l-2 border-gold-400/20 pl-3">"Every experience should leave something deeper than memories."</p></div>
+                <div class="committee-card reveal glass-card p-7 md:p-9 group relative overflow-hidden"><div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-gold-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-scout-900/70 to-dark-800/70 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"><svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13"/></svg></div><h3 class="font-display font-bold text-lg mb-2 group-hover:text-gold-400 transition-colors duration-300">Training</h3><p class="text-cream/45 leading-relaxed text-sm mb-2">Leadership development, mentorship, workshops, and preparing future scout leaders. Includes <span class="text-gold-400 font-semibold">Salam Leadership Training (SLT)</span>.</p><p class="text-cream/30 italic text-xs border-l-2 border-gold-400/20 pl-3">"Strong leaders create stronger generations."</p></div>
+                <div class="committee-card reveal glass-card p-7 md:p-9 group relative overflow-hidden"><div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-scout-900/70 to-dark-800/70 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"><svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></div><h3 class="font-display font-bold text-lg mb-2 group-hover:text-emerald-400 transition-colors duration-300">Media</h3><p class="text-cream/45 leading-relaxed text-sm mb-3">Photography, videography, live coverage, storytelling, and documenting experiences.</p><div class="flex gap-4 mb-3"><span class="text-gold-400 text-xs font-display font-bold">8K+ FB</span><span class="text-gold-400 text-xs font-display font-bold">1K+ IG</span></div><p class="text-cream/30 italic text-xs border-l-2 border-emerald-400/20 pl-3">"Stories create connection. Connection creates community."</p></div>
+                <div class="committee-card reveal glass-card p-7 md:p-9 group relative overflow-hidden"><div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-scout-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-scout-900/70 to-dark-800/70 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"><svg class="w-6 h-6 text-scout-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><h3 class="font-display font-bold text-lg mb-2 group-hover:text-scout-400 transition-colors duration-300">Logistics</h3><p class="text-cream/45 leading-relaxed text-sm mb-3">Preparation, organization, transportation, setup, operations, and execution quality.</p><p class="text-cream/30 italic text-xs border-l-2 border-scout-400/20 pl-3">"Impact is created through preparation and teamwork."</p></div>
+                <div class="committee-card reveal glass-card p-7 md:p-9 group relative overflow-hidden md:col-span-2 lg:col-span-1"><div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-gold-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-scout-900/70 to-dark-800/70 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"><svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><h3 class="font-display font-bold text-lg mb-2 group-hover:text-gold-400 transition-colors duration-300">Secretary</h3><p class="text-cream/45 leading-relaxed text-sm mb-3">Coordination, scheduling, communication, and operational organization.</p><p class="text-cream/30 italic text-xs border-l-2 border-gold-400/20 pl-3">"Strong organization creates lasting impact."</p></div>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- ========== MORE THAN ACTIVITIES ========== -->
+    <section id="more-than-activities" class="relative py-28 md:py-36 overflow-hidden">
+        <div class="ambient-glow absolute top-1/2 left-0 w-[500px] h-[500px] bg-scout-500/6 rounded-full blur-[160px] pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16"><span class="section-label reveal">Deeper Purpose</span><h2 class="section-title reveal">More Than Activities</h2></div>
+            <div class="space-y-6 md:space-y-8 mb-16">
+                <div class="reveal flex items-center gap-5 md:gap-8 max-w-3xl mx-auto"><div class="w-12 h-[1px] bg-gradient-to-r from-transparent to-scout-400/40 flex-shrink-0 hidden md:block"></div><p class="font-display text-xl md:text-2xl font-bold text-cream/80">A camp becomes a lesson in <span class="text-scout-400">responsibility</span>.</p></div>
+                <div class="reveal flex items-center gap-5 md:gap-8 max-w-3xl mx-auto"><div class="w-12 h-[1px] bg-gradient-to-r from-transparent to-gold-400/40 flex-shrink-0 hidden md:block"></div><p class="font-display text-xl md:text-2xl font-bold text-cream/80">A trip becomes an opportunity to discover <span class="text-gold-400">confidence</span>.</p></div>
+                <div class="reveal flex items-center gap-5 md:gap-8 max-w-3xl mx-auto"><div class="w-12 h-[1px] bg-gradient-to-r from-transparent to-emerald-400/40 flex-shrink-0 hidden md:block"></div><p class="font-display text-xl md:text-2xl font-bold text-cream/80">A ceremony becomes a moment of <span class="text-emerald-400">belonging</span>.</p></div>
+            </div>
+            <div class="reveal glass-card p-7 md:p-10 max-w-3xl mx-auto mb-14">
+                <p class="font-display text-base text-cream/55 mb-5">At SSG, experiences help young people grow through:</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3"><div class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-scout-400"></span><span class="text-cream/65 text-sm">Leadership</span></div><div class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span><span class="text-cream/65 text-sm">Teamwork</span></div><div class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span class="text-cream/65 text-sm">Discipline</span></div><div class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span><span class="text-cream/65 text-sm">Compassion</span></div><div class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-scout-400"></span><span class="text-cream/65 text-sm">Shared experiences</span></div></div>
+            </div>
+            <div class="reveal max-w-3xl mx-auto text-center"><div class="quote-block"><p class="font-display text-xl md:text-2xl font-semibold text-cream/75 italic">"We don't only create memories. We help shape <span class="text-gold-400">character</span>."</p></div></div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- ========== EXPERIENCES ========== -->
+    <section id="experiences" class="relative py-28 md:py-36 overflow-hidden">
+        <div class="ambient-glow absolute top-0 left-0 w-[500px] h-[500px] bg-scout-500/6 rounded-full blur-[160px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-6"><span class="section-label reveal">Where Growth Happens</span><h2 class="section-title reveal">Camps & Experiences</h2></div>
+            <div class="reveal max-w-3xl mx-auto text-center mb-16"><p class="font-display text-lg md:text-xl text-cream/50 leading-relaxed mb-3">Some lessons are learned under open skies.</p><p class="font-display text-lg md:text-xl text-cream/50 leading-relaxed mb-3">Some friendships are built around campfires.</p><p class="font-display text-lg md:text-xl text-cream/50 leading-relaxed">Some leadership moments begin during challenges and shared responsibility.</p></div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+                <div class="experience-card reveal glass-card p-0 overflow-hidden group"><div class="photo-card h-40 md:h-48 relative"><img data-src="assets/images/optimized/camp-hurghada-1.jpg" alt="SSG Hurghada Camp" class="lazy-image" loading="lazy"><div class="photo-overlay"></div></div><div class="p-5 md:p-6"><h3 class="font-display font-bold text-base mb-1.5">Camps</h3><p class="text-cream/45 text-sm leading-relaxed">Immersive outdoor experiences building resilience and bonds.</p></div></div>
+                <div class="experience-card reveal glass-card p-0 overflow-hidden group"><div class="photo-card h-40 md:h-48 relative"><img data-src="assets/images/optimized/camp-aswan-2.jpg" alt="SSG Aswan Exploration" class="lazy-image" loading="lazy"><div class="photo-overlay"></div></div><div class="p-5 md:p-6"><h3 class="font-display font-bold text-base mb-1.5">Educational Trips</h3><p class="text-cream/45 text-sm leading-relaxed">Guided journeys connecting learning with discovery.</p></div></div>
+                <div class="experience-card reveal glass-card p-0 overflow-hidden group"><div class="photo-card h-40 md:h-48 relative"><img data-src="assets/images/optimized/leadership-1.jpg" alt="SSG Salam Leadership Training" class="lazy-image" loading="lazy"><div class="photo-overlay"></div></div><div class="p-5 md:p-6"><h3 class="font-display font-bold text-base mb-1.5">Leadership Days</h3><p class="text-cream/45 text-sm leading-relaxed">Intensive sessions developing young leaders.</p></div></div>
+                <div class="experience-card reveal glass-card p-0 overflow-hidden group"><div class="photo-card h-40 md:h-48 relative"><img data-src="assets/images/optimized/ceremony-2.jpg" alt="SSG Closing Ceremony" class="lazy-image" loading="lazy"><div class="photo-overlay"></div></div><div class="p-5 md:p-6"><h3 class="font-display font-bold text-base mb-1.5">Ceremonies</h3><p class="text-cream/45 text-sm leading-relaxed">Moments of pride, recognition, and belonging.</p></div></div>
+                <div class="experience-card reveal glass-card p-0 overflow-hidden group"><div class="photo-card h-40 md:h-48 relative"><img data-src="assets/images/optimized/activity-1.jpg" alt="SSG Cultural Activities" class="lazy-image" loading="lazy"><div class="photo-overlay"></div></div><div class="p-5 md:p-6"><h3 class="font-display font-bold text-base mb-1.5">Cultural Activities</h3><p class="text-cream/45 text-sm leading-relaxed">Learning through cultural immersion and exchange.</p></div></div>
+                <div class="experience-card reveal glass-card p-0 overflow-hidden group"><div class="photo-card h-40 md:h-48 relative"><img data-src="assets/images/optimized/camp-hurghada-4.jpg" alt="SSG Outdoor Adventure" class="lazy-image" loading="lazy"><div class="photo-overlay"></div></div><div class="p-5 md:p-6"><h3 class="font-display font-bold text-base mb-1.5">Outdoor Adventures</h3><p class="text-cream/45 text-sm leading-relaxed">Nature discovery and scouting exploration.</p></div></div>
+            </div>
+            <div class="reveal max-w-3xl mx-auto text-center mt-14"><div class="quote-block"><p class="font-display text-xl md:text-2xl font-semibold text-cream/75 italic">"Experience teaches what <span class="text-gold-400">words cannot</span>."</p></div></div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- ========== SIGNATURE EXPERIENCES ========== -->
+    <section id="signature" class="relative py-28 md:py-36 overflow-hidden">
+        <div class="ambient-glow absolute top-[20%] right-0 w-[400px] h-[400px] bg-gold-400/6 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 md:mb-24"><span class="section-label reveal">Defining Moments</span><h2 class="section-title reveal">Signature Experiences</h2></div>
+            <div class="mb-20 md:mb-28"><div class="grid lg:grid-cols-2 gap-10 md:gap-14 items-center">
+                <div class="reveal order-2 lg:order-1"><span class="inline-block px-3.5 py-1 rounded-full bg-gold-400/8 text-gold-400/80 text-xs font-display font-semibold tracking-wider uppercase mb-5">Annual Tradition</span><h3 class="font-display text-2xl md:text-3xl font-bold mb-5 leading-tight">Annual <span class="text-gold-400">Closing Ceremony</span></h3><p class="text-cream/55 text-base leading-relaxed mb-5">Every year, SSG brings together scouts, leaders, and families through performances, storytelling, recognition, celebration, and shared memories.</p><p class="text-cream/45 text-sm leading-relaxed mb-6">Attended by hundreds of participants and families, reflecting the spirit and identity of the group.</p><div class="flex gap-6 mb-6"><div><div class="text-xl font-display font-bold text-gold-400">900+</div><div class="text-cream/35 text-xs">Attendees</div></div></div><p class="text-cream/40 italic text-sm border-l-2 border-gold-400/20 pl-3">"Some memories stay for years."</p></div>
+                <div class="reveal order-1 lg:order-2"><div class="section-cover aspect-photo rounded-2xl"><img data-src="assets/images/optimized/ceremony-1.jpg" alt="SSG Closing Ceremony 2025 — Stage Performance" class="lazy-image" loading="lazy"></div></div>
+            </div></div>
+            <div><div class="grid lg:grid-cols-2 gap-10 md:gap-14 items-center">
+                <div class="reveal"><div class="section-cover aspect-photo rounded-2xl"><img data-src="assets/images/optimized/camp-aswan-2.jpg" alt="SSG Aswan Exploration Trip" class="lazy-image" loading="lazy"></div></div>
+                <div class="reveal"><span class="inline-block px-3.5 py-1 rounded-full bg-scout-600/15 text-scout-400/80 text-xs font-display font-semibold tracking-wider uppercase mb-5">Expedition</span><h3 class="font-display text-2xl md:text-3xl font-bold mb-5 leading-tight">Aswan <span class="text-scout-400">Exploration Trip</span></h3><p class="text-cream/55 text-base leading-relaxed mb-5">From ancient temples to teamwork challenges — combining adventure, responsibility, teamwork, discovery, and leadership.</p><p class="text-cream/45 text-sm leading-relaxed mb-6">Helping young people build confidence, independence, and stronger bonds.</p><p class="text-cream/40 italic text-sm border-l-2 border-scout-400/20 pl-3">"Some lessons are learned under open skies."</p></div>
+            </div></div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- ========== EDUCATION ========== -->
+    <section id="education" class="relative py-28 md:py-36 overflow-hidden">
+        <div class="ambient-glow absolute bottom-[20%] left-0 w-[400px] h-[400px] bg-emerald-500/6 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16"><span class="section-label reveal">Beyond Classrooms</span><h2 class="section-title reveal">Education Beyond <span class="text-gold-400">Classrooms</span></h2><p class="section-subtitle reveal max-w-3xl mx-auto">We believe meaningful learning happens through real experiences.</p></div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-14">
+                <div class="reveal glass-card p-6 md:p-7 group"><div class="w-10 h-10 rounded-lg bg-scout-900/50 flex items-center justify-center mb-4"><svg class="w-5 h-5 text-scout-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5"/></svg></div><h3 class="font-display font-bold text-base mb-2">Educational Visits</h3><p class="text-cream/45 text-sm leading-relaxed">Guided visits to institutions and places of learning.</p></div>
+                <div class="reveal glass-card p-6 md:p-7 group"><div class="w-10 h-10 rounded-lg bg-gold-400/8 flex items-center justify-center mb-4"><svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg></div><h3 class="font-display font-bold text-base mb-2">Museum Trips</h3><p class="text-cream/45 text-sm leading-relaxed">Cultural immersion through art, history, and science.</p></div>
+                <div class="reveal glass-card p-6 md:p-7 group"><div class="w-10 h-10 rounded-lg bg-scout-900/50 flex items-center justify-center mb-4"><svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></div><h3 class="font-display font-bold text-base mb-2">STEM Exposure</h3><p class="text-cream/45 text-sm leading-relaxed">Science and technology experiences igniting curiosity.</p></div>
+                <div class="reveal glass-card p-6 md:p-7 group"><div class="w-10 h-10 rounded-lg bg-gold-400/8 flex items-center justify-center mb-4"><svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><h3 class="font-display font-bold text-base mb-2">Cultural Experiences</h3><p class="text-cream/45 text-sm leading-relaxed">Heritage immersion building awareness and respect.</p></div>
+                <div class="reveal glass-card p-6 md:p-7 group md:col-span-2 lg:col-span-1"><div class="w-10 h-10 rounded-lg bg-scout-900/50 flex items-center justify-center mb-4"><svg class="w-5 h-5 text-scout-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><h3 class="font-display font-bold text-base mb-2">Interactive Activities</h3><p class="text-cream/45 text-sm leading-relaxed">Hands-on, collaborative, unforgettable learning.</p></div>
+            </div>
+            <div class="reveal max-w-3xl mx-auto text-center"><div class="quote-block"><p class="font-display text-xl md:text-2xl font-semibold text-cream/75 italic">"Some lessons cannot be taught inside <span class="text-gold-400">classrooms</span>."</p></div></div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- ========== PROFESSIONALISM ========== -->
+    <section id="professionalism" class="relative py-28 md:py-36 overflow-hidden">
+        <div class="ambient-glow absolute top-0 right-[20%] w-[400px] h-[400px] bg-gold-400/5 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16"><span class="section-label reveal">Behind the Scenes</span><h2 class="section-title reveal">Professionalism & <span class="text-gold-400">Execution</span></h2><p class="section-subtitle reveal max-w-3xl mx-auto">Behind every successful event is preparation, responsibility, structure, and care.</p></div>
+            <div class="grid md:grid-cols-3 gap-6 reveal mb-14">
+                <div class="glass-card p-7 text-center"><div class="w-14 h-14 mx-auto mb-5 rounded-xl bg-gradient-to-br from-dark-800 to-dark-700/50 flex items-center justify-center"><svg class="w-7 h-7 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg></div><h3 class="font-display font-bold text-base mb-2">Operational Planning</h3><p class="text-cream/45 text-sm leading-relaxed">Safety systems, logistics, and flawless execution.</p></div>
+                <div class="glass-card p-7 text-center"><div class="w-14 h-14 mx-auto mb-5 rounded-xl bg-gradient-to-br from-dark-800 to-dark-700/50 flex items-center justify-center"><svg class="w-7 h-7 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></div><h3 class="font-display font-bold text-base mb-2">Media Coverage</h3><p class="text-cream/45 text-sm leading-relaxed">Professional documentation capturing every moment.</p></div>
+                <div class="glass-card p-7 text-center"><div class="w-14 h-14 mx-auto mb-5 rounded-xl bg-gradient-to-br from-dark-800 to-dark-700/50 flex items-center justify-center"><svg class="w-7 h-7 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></div><h3 class="font-display font-bold text-base mb-2">Communication</h3><p class="text-cream/45 text-sm leading-relaxed">Clear coordination keeping every team aligned.</p></div>
+            </div>
+            <!-- Awards photo strip -->
+            <div class="reveal photo-strip mt-10 mb-10">
+                <div class="photo-card flex-shrink-0 w-[300px] h-[200px] md:w-[360px] md:h-[240px] rounded-xl"><img data-src="assets/images/optimized/awards-1.jpg" alt="SSG Award Ceremony" class="lazy-image" loading="lazy"><div class="photo-overlay"></div><div class="photo-caption"><p class="font-display text-xs font-semibold text-cream/80">Award Ceremony</p></div></div>
+                <div class="photo-card flex-shrink-0 w-[300px] h-[200px] md:w-[360px] md:h-[240px] rounded-xl"><img data-src="assets/images/optimized/ceremony-3.jpg" alt="SSG Ceremony Performance" class="lazy-image" loading="lazy"><div class="photo-overlay"></div><div class="photo-caption"><p class="font-display text-xs font-semibold text-cream/80">Ceremony Performance</p></div></div>
+                <div class="photo-card flex-shrink-0 w-[300px] h-[200px] md:w-[360px] md:h-[240px] rounded-xl"><img data-src="assets/images/optimized/ceremony-4.jpg" alt="SSG Ceremony Moment" class="lazy-image" loading="lazy"><div class="photo-overlay"></div><div class="photo-caption"><p class="font-display text-xs font-semibold text-cream/80">Closing Ceremony</p></div></div>
+                <div class="photo-card flex-shrink-0 w-[300px] h-[200px] md:w-[360px] md:h-[240px] rounded-xl"><img data-src="assets/images/optimized/gallery-1.jpg" alt="SSG Gallery" class="lazy-image" loading="lazy"><div class="photo-overlay"></div><div class="photo-caption"><p class="font-display text-xs font-semibold text-cream/80">Scouting Life</p></div></div>
+            </div>
+            <div class="reveal max-w-3xl mx-auto text-center"><div class="quote-block"><p class="font-display text-xl md:text-2xl font-semibold text-cream/75 italic">"Excellence is built <span class="text-gold-400">behind the scenes</span>."</p></div></div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- ========== LEADERSHIP BEYOND BORDERS ========== -->
+    <section id="participation" class="relative py-28 md:py-36 overflow-hidden">
+        <div class="ambient-glow absolute bottom-0 right-0 w-[500px] h-[500px] bg-scout-500/6 rounded-full blur-[160px] pointer-events-none"></div>
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16"><span class="section-label reveal">Global Perspective</span><h2 class="section-title reveal">Leadership Beyond <span class="text-gold-400">Borders</span></h2><p class="section-subtitle reveal max-w-3xl mx-auto">SSG leaders participate in national and international scouting experiences.</p></div>
+            <div class="grid md:grid-cols-2 gap-10 items-center mb-14">
+                <div class="reveal">
+                    <!-- Leadership Beyond Borders photo -->
+                    <div class="section-cover aspect-photo rounded-2xl">
+                        <img data-src="assets/images/optimized/leadership-beyond-borders.jpg" alt="SSG leaders representing Egypt at an international scouting event" class="lazy-image" loading="lazy">
+                    </div>
+                </div>
+                <div class="reveal space-y-5">
+                    <div class="glass-card p-5 hover:border-gold-400/15 transition-all duration-300"><div class="flex items-center gap-2.5 mb-1.5"><div class="w-7 h-7 rounded-lg bg-gold-400/8 flex items-center justify-center"><svg class="w-3.5 h-3.5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/></svg></div><h4 class="font-display font-bold text-sm">Egypt National Scout Conference PT</h4></div><p class="text-cream/40 text-xs leading-relaxed">National-level representation and scouting excellence.</p></div>
+                    <div class="glass-card p-5 hover:border-scout-400/15 transition-all duration-300"><div class="flex items-center gap-2.5 mb-1.5"><div class="w-7 h-7 rounded-lg bg-scout-600/15 flex items-center justify-center"><svg class="w-3.5 h-3.5 text-scout-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><h4 class="font-display font-bold text-sm">ILT3 — Arab Region</h4></div><p class="text-cream/40 text-xs leading-relaxed">International Leadership Training building cross-border connections.</p></div>
+                    <div class="glass-card p-5 bg-dark-800/30"><p class="text-cream/40 text-xs leading-relaxed">Bringing back <span class="text-cream/65 font-medium">knowledge, inspiration, and leadership practices</span>.</p></div>
+                </div>
+            </div>
+            <div class="reveal max-w-3xl mx-auto text-center"><div class="quote-block"><p class="font-display text-xl md:text-2xl font-semibold text-cream/75 italic">"Leadership grows when <span class="text-gold-400">perspectives expand</span>."</p></div></div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- ========== COMMUNITY ========== -->
+    <section id="community" class="relative py-28 md:py-36 overflow-hidden">
+        <div class="ambient-glow absolute top-[30%] left-0 w-[400px] h-[400px] bg-scout-500/6 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16"><span class="section-label reveal">Connection</span><h2 class="section-title reveal">Community & <span class="text-gold-400">Impact</span></h2><p class="section-subtitle reveal max-w-3xl mx-auto">Through storytelling and visual coverage, SSG shares moments that inspire thousands.</p></div>
+            <!-- Community photo gallery -->
+            <div class="reveal photo-strip mb-14">
+                <div class="photo-card flex-shrink-0 w-[280px] h-[190px] md:w-[340px] md:h-[230px] rounded-xl"><img data-src="assets/images/optimized/activity-2.jpg" alt="SSG Cultural Activities" class="lazy-image" loading="lazy"><div class="photo-overlay"></div><div class="photo-caption"><p class="font-display text-xs font-semibold text-cream/80">Cultural Celebration</p></div></div>
+                <div class="photo-card flex-shrink-0 w-[280px] h-[190px] md:w-[340px] md:h-[230px] rounded-xl"><img data-src="assets/images/optimized/camp-hurghada-2.jpg" alt="SSG Camp Life" class="lazy-image" loading="lazy"><div class="photo-overlay"></div><div class="photo-caption"><p class="font-display text-xs font-semibold text-cream/80">Camp Life</p></div></div>
+                <div class="photo-card flex-shrink-0 w-[280px] h-[190px] md:w-[340px] md:h-[230px] rounded-xl"><img data-src="assets/images/optimized/gallery-2.jpg" alt="SSG Gallery" class="lazy-image" loading="lazy"><div class="photo-overlay"></div><div class="photo-caption"><p class="font-display text-xs font-semibold text-cream/80">Scouting Moments</p></div></div>
+                <div class="photo-card flex-shrink-0 w-[280px] h-[190px] md:w-[340px] md:h-[230px] rounded-xl"><img data-src="assets/images/optimized/camp-hurghada-3.jpg" alt="SSG Hurghada Camp" class="lazy-image" loading="lazy"><div class="photo-overlay"></div><div class="photo-caption"><p class="font-display text-xs font-semibold text-cream/80">Hurghada Camp</p></div></div>
+                <div class="photo-card flex-shrink-0 w-[280px] h-[190px] md:w-[340px] md:h-[230px] rounded-xl"><img data-src="assets/images/optimized/activity-3.jpg" alt="SSG Activities" class="lazy-image" loading="lazy"><div class="photo-overlay"></div><div class="photo-caption"><p class="font-display text-xs font-semibold text-cream/80">Team Activities</p></div></div>
+            </div>
+            <div class="reveal glass-card p-8 md:p-12 max-w-3xl mx-auto text-center mb-14">
+                <h3 class="font-display font-bold text-lg mb-6 text-cream/60">Reach Highlights</h3>
+                <div class="grid grid-cols-2 gap-6"><div><div class="text-3xl md:text-4xl font-display font-800 text-gold-400"><span class="counter" data-target="8000" data-suffix="+">0</span></div><p class="text-cream/35 text-xs mt-1.5">Facebook Community</p></div><div><div class="text-3xl md:text-4xl font-display font-800 text-gold-400"><span class="counter" data-target="1000" data-suffix="+">0</span></div><p class="text-cream/35 text-xs mt-1.5">Instagram Followers</p></div></div>
+            </div>
+            <div class="reveal max-w-3xl mx-auto text-center"><div class="quote-block"><p class="font-display text-xl md:text-2xl font-semibold text-cream/75 italic">"Stories create <span class="text-gold-400">connection</span>."</p></div></div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- ========== PARTNERSHIPS ========== -->
+    <section id="partnerships" class="relative py-28 md:py-36 overflow-hidden">
+        <div class="ambient-glow absolute top-[20%] right-0 w-[400px] h-[400px] bg-gold-400/6 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16"><span class="section-label reveal">Collaborate</span><h2 class="section-title reveal">Why Partner With <span class="text-gold-400">Us</span>?</h2><p class="section-subtitle reveal max-w-3xl mx-auto">We are looking for organizations that believe in empowering young people, supporting education, encouraging leadership, and creating positive social impact.</p></div>
+            <div class="reveal glass-card p-7 md:p-10 max-w-3xl mx-auto mb-16 text-center"><p class="font-display text-base text-cream/55 mb-6">Together, we can help shape experiences that inspire:</p><div class="flex flex-wrap justify-center gap-3"><span class="px-4 py-2 rounded-full bg-dark-800/50 border border-scout-500/12 text-cream/60 font-display text-sm">Confidence</span><span class="px-4 py-2 rounded-full bg-dark-800/50 border border-scout-500/12 text-cream/60 font-display text-sm">Responsibility</span><span class="px-4 py-2 rounded-full bg-dark-800/50 border border-scout-500/12 text-cream/60 font-display text-sm">Teamwork</span><span class="px-4 py-2 rounded-full bg-gold-400/6 border border-gold-400/12 text-gold-400/75 font-display text-sm">Compassion</span><span class="px-4 py-2 rounded-full bg-gold-400/6 border border-gold-400/12 text-gold-400/75 font-display text-sm">Future Leadership</span></div></div>
+            <div class="reveal text-center mb-14"><div class="quote-block"><p class="font-display text-xl md:text-2xl font-semibold text-cream/75 italic">"Great partnerships help shape <span class="text-gold-400">futures</span>."</p></div></div>
+            <div class="text-center mb-10"><h3 class="section-title reveal !text-2xl md:!text-3xl">Partnership <span class="text-gold-400">Opportunities</span></h3></div>
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 mb-14">
+                <div class="reveal glass-card p-7 md:p-8 border-scout-500/8 hover:border-scout-400/20 transition-all duration-300"><div class="flex items-center gap-3 mb-5"><div class="w-10 h-10 rounded-lg bg-scout-900/50 flex items-center justify-center"><svg class="w-5 h-5 text-scout-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13"/></svg></div><h4 class="font-display font-bold text-lg text-scout-400">Educational</h4></div><ul class="space-y-2.5"><li class="flex items-center gap-2.5 text-cream/55 text-sm"><span class="w-1 h-1 rounded-full bg-scout-400 flex-shrink-0"></span>Factory Visits</li><li class="flex items-center gap-2.5 text-cream/55 text-sm"><span class="w-1 h-1 rounded-full bg-scout-400 flex-shrink-0"></span>STEM Workshops</li><li class="flex items-center gap-2.5 text-cream/55 text-sm"><span class="w-1 h-1 rounded-full bg-scout-400 flex-shrink-0"></span>Engineering Exposure</li><li class="flex items-center gap-2.5 text-cream/55 text-sm"><span class="w-1 h-1 rounded-full bg-scout-400 flex-shrink-0"></span>Career Awareness Sessions</li><li class="flex items-center gap-2.5 text-cream/55 text-sm"><span class="w-1 h-1 rounded-full bg-scout-400 flex-shrink-0"></span>Leadership Talks</li><li class="flex items-center gap-2.5 text-cream/55 text-sm"><span class="w-1 h-1 rounded-full bg-scout-400 flex-shrink-0"></span>Technology Experiences</li></ul></div>
+                <div class="reveal glass-card p-7 md:p-8 border-gold-400/8 hover:border-gold-400/20 transition-all duration-300"><div class="flex items-center gap-3 mb-5"><div class="w-10 h-10 rounded-lg bg-gold-400/8 flex items-center justify-center"><svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><h4 class="font-display font-bold text-lg text-gold-400">Sponsorship</h4></div><ul class="space-y-2.5"><li class="flex items-center gap-2.5 text-cream/55 text-sm"><span class="w-1 h-1 rounded-full bg-gold-400 flex-shrink-0"></span>Events</li><li class="flex items-center gap-2.5 text-cream/55 text-sm"><span class="w-1 h-1 rounded-full bg-gold-400 flex-shrink-0"></span>Camps</li><li class="flex items-center gap-2.5 text-cream/55 text-sm"><span class="w-1 h-1 rounded-full bg-gold-400 flex-shrink-0"></span>Educational Initiatives</li><li class="flex items-center gap-2.5 text-cream/55 text-sm"><span class="w-1 h-1 rounded-full bg-gold-400 flex-shrink-0"></span>Youth Programs</li><li class="flex items-center gap-2.5 text-cream/55 text-sm"><span class="w-1 h-1 rounded-full bg-gold-400 flex-shrink-0"></span>Transportation Support</li><li class="flex items-center gap-2.5 text-cream/55 text-sm"><span class="w-1 h-1 rounded-full bg-gold-400 flex-shrink-0"></span>Media Partnerships</li></ul></div>
+            </div>
+            <div class="reveal max-w-3xl mx-auto text-center"><div class="quote-block mb-10"><p class="font-display text-xl md:text-2xl font-semibold text-cream/75 italic">"Together, we can create experiences that leave <span class="text-gold-400">lasting impact</span>."</p></div><a href="#contact" class="cta-button inline-block px-10 py-4 rounded-full font-display font-semibold text-sm tracking-wider uppercase">Become a Partner</a></div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- ========== LOOKING AHEAD ========== -->
+    <section id="looking-ahead" class="relative py-28 md:py-36 overflow-hidden">
+        <div class="ambient-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-scout-500/6 rounded-full blur-[180px] pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <span class="section-label reveal">The Road Ahead</span><h2 class="section-title reveal">Looking <span class="text-gold-400">Ahead</span></h2><p class="section-subtitle reveal max-w-3xl mx-auto mb-14">As SSG continues to grow, we remain committed to building a stronger future.</p>
+            <div class="grid md:grid-cols-2 gap-5 md:gap-6 text-left mb-14">
+                <div class="reveal glass-card p-6 md:p-7 hover:border-scout-400/15 transition-all duration-300"><div class="flex items-center gap-3 mb-3"><div class="w-9 h-9 rounded-lg bg-scout-900/50 flex items-center justify-center"><svg class="w-4 h-4 text-scout-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13"/></svg></div><h4 class="font-display font-bold text-sm">Expanding Educational Opportunities</h4></div><p class="text-cream/40 text-xs leading-relaxed">New learning pathways through partnerships.</p></div>
+                <div class="reveal glass-card p-6 md:p-7 hover:border-gold-400/15 transition-all duration-300"><div class="flex items-center gap-3 mb-3"><div class="w-9 h-9 rounded-lg bg-gold-400/8 flex items-center justify-center"><svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg></div><h4 class="font-display font-bold text-sm">Strengthening Leadership</h4></div><p class="text-cream/40 text-xs leading-relaxed">Deeper programs for real-world challenges.</p></div>
+                <div class="reveal glass-card p-6 md:p-7 hover:border-emerald-400/15 transition-all duration-300"><div class="flex items-center gap-3 mb-3"><div class="w-9 h-9 rounded-lg bg-scout-900/50 flex items-center justify-center"><svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></div><h4 class="font-display font-bold text-sm">Integrating Technology & STEM</h4></div><p class="text-cream/40 text-xs leading-relaxed">Innovation in scouting activities.</p></div>
+                <div class="reveal glass-card p-6 md:p-7 hover:border-gold-400/15 transition-all duration-300"><div class="flex items-center gap-3 mb-3"><div class="w-9 h-9 rounded-lg bg-gold-400/8 flex items-center justify-center"><svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div><h4 class="font-display font-bold text-sm">Increasing Community Impact</h4></div><p class="text-cream/40 text-xs leading-relaxed">Growing reach and deepening service.</p></div>
+            </div>
+            <div class="reveal glass-card p-7 md:p-8 max-w-2xl mx-auto mb-12"><p class="text-cream/55 leading-relaxed text-base">Above all, we remain committed to helping raise generations that lead with <span class="text-gold-400 font-semibold">integrity</span>, <span class="text-scout-400 font-semibold">compassion</span>, and <span class="text-gold-400 font-semibold">positive impact</span>.</p></div>
+            <div class="reveal"><div class="quote-block"><p class="font-display text-xl md:text-2xl font-semibold text-cream/75 italic">"The future is built through the generations we <span class="text-gold-400">raise today</span>."</p></div></div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- ========== FINALE ========== -->
+    <section id="finale" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="ambient-glow absolute top-[20%] left-[20%] w-[600px] h-[600px] bg-scout-600/10 rounded-full blur-[180px] pointer-events-none"></div>
+        <div class="ambient-glow absolute bottom-[20%] right-[20%] w-[500px] h-[500px] bg-gold-400/6 rounded-full blur-[160px] pointer-events-none"></div>
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+            <div class="reveal"><span class="section-label mb-6 block">The Journey Continues</span></div>
+            <div class="reveal"><h2 class="font-display text-4xl md:text-6xl lg:text-7xl font-800 leading-[0.95] mb-8"><span class="block text-cream/90">The Future</span><span class="block bg-gradient-to-r from-scout-400 via-gold-400 to-emerald-400 bg-clip-text text-transparent">Starts Here</span></h2></div>
+            <div class="reveal max-w-3xl mx-auto mb-10">
+                <p class="font-display text-lg md:text-xl text-cream/45 leading-relaxed mb-5">One day, the children we guide today will become:</p>
+                <div class="flex flex-wrap justify-center gap-2.5 mb-8"><span class="px-4 py-1.5 rounded-full bg-dark-800/50 border border-scout-500/12 text-cream/60 font-display text-sm">Leaders</span><span class="px-4 py-1.5 rounded-full bg-dark-800/50 border border-scout-500/12 text-cream/60 font-display text-sm">Parents</span><span class="px-4 py-1.5 rounded-full bg-dark-800/50 border border-scout-500/12 text-cream/60 font-display text-sm">Professionals</span><span class="px-4 py-1.5 rounded-full bg-gold-400/6 border border-gold-400/12 text-gold-400/75 font-display text-sm">Mentors</span><span class="px-4 py-1.5 rounded-full bg-gold-400/6 border border-gold-400/12 text-gold-400/75 font-display text-sm">World Influencers</span></div>
+                <div class="space-y-2 mb-8"><p class="font-display text-lg md:text-xl text-cream/70 font-semibold">Every lesson <span class="text-scout-400">matters</span>.</p><p class="font-display text-lg md:text-xl text-cream/70 font-semibold">Every challenge <span class="text-gold-400">matters</span>.</p><p class="font-display text-lg md:text-xl text-cream/70 font-semibold">Every experience <span class="text-emerald-400">matters</span>.</p></div>
+            </div>
+            <div class="reveal mb-10"><div class="quote-block"><p class="font-display text-2xl md:text-3xl font-bold text-cream/85">"Building future leaders with <span class="text-gold-400">values</span>."</p></div></div>
+            <div class="reveal"><a href="#contact" class="cta-button inline-block px-12 py-5 rounded-full font-display font-semibold tracking-wider uppercase">Let's Create Impact Together</a></div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer id="contact" class="relative py-16 md:py-24 border-t border-cream/5" style="background: linear-gradient(180deg, #0F172A 0%, #0B1120 100%)">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-10 md:gap-8 mb-14">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-5">
+                        <img src="assets/images/ssg-logo.png" alt="SSG" class="w-11 h-11 object-contain">
+                        <div><h3 class="font-display font-bold text-base">Al-Salam Scouting Groups</h3><p class="text-cream/25 text-xs tracking-wider uppercase">Building Future Leaders</p></div>
+                    </div>
+                    <p class="text-cream/35 leading-relaxed max-w-md mb-5 text-sm">More than scouting. A journey of leadership, values, responsibility, and positive impact since 1977.</p>
+                    <div class="flex gap-3">
+                        <a href="https://www.facebook.com/groups/AlSalamScoutingGroups" target="_blank" class="w-9 h-9 rounded-lg bg-cream/4 flex items-center justify-center hover:bg-scout-600/20 transition-colors duration-300" aria-label="Facebook"><svg class="w-4 h-4 text-cream/35" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                        <a href="https://www.instagram.com/ssg_elrehab_club" target="_blank" class="w-9 h-9 rounded-lg bg-cream/4 flex items-center justify-center hover:bg-scout-600/20 transition-colors duration-300" aria-label="Instagram"><svg class="w-4 h-4 text-cream/35" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-xs tracking-wider uppercase text-cream/40 mb-5">Connect</h4>
+                    <ul class="space-y-3.5">
+                        <li class="flex items-start gap-2.5"><svg class="w-4 h-4 text-cream/25 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><div><p class="text-cream/45 text-xs font-medium">Facebook</p><p class="text-cream/25 text-xs">Al-Salam Scouting Groups</p></div></li>
+                        <li class="flex items-start gap-2.5"><svg class="w-4 h-4 text-cream/25 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg><div><p class="text-cream/45 text-xs font-medium">Instagram</p><p class="text-cream/25 text-xs">@ssg_elrehab_club</p></div></li>
+                        <li class="flex items-start gap-2.5"><svg class="w-4 h-4 text-cream/25 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><div><p class="text-cream/45 text-xs font-medium">Location</p><p class="text-cream/25 text-xs">Rehab Sporting Club, Egypt</p></div></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mb-10"><p class="font-display text-sm text-cream/20 italic">"Together, we can help shape future generations."</p></div>
+            <div class="pt-6 border-t border-cream/4 flex flex-col md:flex-row justify-between items-center gap-3"><p class="text-cream/15 text-xs">&copy; 2025 Al-Salam Scouting Groups</p><p class="text-cream/15 text-xs">Building future leaders since 1977</p></div>
+        </div>
+    </footer>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
