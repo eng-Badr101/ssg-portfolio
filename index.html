@@ -43,11 +43,11 @@
 <body class="bg-dark-900 text-cream font-body" style="overflow: hidden;">
 
     <!-- ========== LOADING SCREEN ========== -->
-    <div id="loading-screen" class="fixed inset-0 z-[10000] flex flex-col items-center justify-center" style="background: radial-gradient(ellipse at center, #1E293B 0%, #0F172A 70%)">
-        <img src="assets/images/ssg-logo.png" alt="SSG Logo" class="loading-logo mb-8">
-        <h2 class="loading-text font-display text-lg md:text-xl tracking-[0.3em] uppercase text-cream/60 mb-2">Al-Salam Scouting Groups</h2>
-        <p class="text-cream/25 text-sm tracking-widest mb-8 font-body">SSG Partnership & Sponsorship Portfolio</p>
-        <div class="loading-bar w-48 h-[2px] bg-dark-700/50 rounded-full overflow-hidden">
+    <div id="loading-screen" class="fixed inset-0 z-[10000] flex flex-col items-center justify-center px-4 md:px-0 text-center w-full overflow-hidden" style="background: radial-gradient(ellipse at center, #1E293B 0%, #0F172A 70%)">
+        <img src="assets/images/ssg-logo.png" alt="SSG Logo" class="loading-logo mb-6 md:mb-8">
+        <h2 class="loading-text font-display text-[clamp(0.85rem,4vw,1.25rem)] tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] uppercase text-cream/60 mb-2 w-full max-w-full break-words">Al-Salam Scouting Groups</h2>
+        <p class="text-cream/25 text-[clamp(0.7rem,3vw,0.875rem)] tracking-wider md:tracking-widest mb-8 font-body w-full max-w-full break-words px-2">SSG Partnership & Sponsorship Portfolio</p>
+        <div class="loading-bar w-full max-w-[12rem] md:max-w-[16rem] h-[2px] bg-dark-700/50 rounded-full overflow-hidden">
             <div class="loading-bar-fill h-full bg-gradient-to-r from-scout-500 via-emerald-500 to-gold-400 rounded-full" style="width: 0%"></div>
         </div>
     </div>
@@ -119,13 +119,13 @@
                 More than scouting. A journey of leadership, values, responsibility, and positive impact.
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0 hero-cta">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0 hero-cta mb-20 md:mb-0">
                 <a href="#who-we-are" class="cta-button px-8 py-4 rounded-full font-display font-semibold text-sm tracking-wider uppercase">Discover Our Story</a>
                 <a href="#partnerships" class="px-8 py-4 rounded-full border border-cream/15 font-display font-medium text-sm tracking-wider uppercase text-cream/70 hover:border-scout-400/40 hover:text-scout-400 transition-all duration-400 backdrop-blur-sm bg-dark-900/30">Partner With Us</a>
             </div>
         </div>
 
-        <div class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0">
+        <div class="scroll-indicator absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0">
             <span class="text-cream/25 text-xs tracking-[0.2em] uppercase font-display">Scroll</span>
             <div class="w-[1px] h-12 bg-gradient-to-b from-cream/25 to-transparent relative overflow-hidden">
                 <div class="absolute inset-x-0 h-4 bg-scout-400/50 animate-bounce"></div>
