@@ -1432,7 +1432,7 @@ figcaption {
   flex: 1;
   border-radius: var(--radius-print);
   overflow: hidden;
-  transition: flex 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: flex 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: zoom-in;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   isolation: isolate;
@@ -2216,6 +2216,18 @@ figcaption {
     font-size: 1rem;
   }
 
+  /* Lang toggle inside mobile nav */
+  .lang-toggle {
+    justify-self: start;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  /* RTL: lang toggle aligns right in mobile menu */
+  html[lang="ar"] .lang-toggle {
+    justify-self: end;
+  }
+
   .editorial-grid,
   .bento-programs,
   .impact-photos,
@@ -2972,9 +2984,9 @@ body.js-enabled .reveal:not(h1, h2).is-revealed {
 
   /* Ken Burns is GSAP-driven — no CSS override needed on mobile */
 
-  /* Faster accordion — less interpolation on mobile */
+  /* Slightly faster on mobile but still smooth */
   .accordion-item {
-    transition: flex 0.9s ease-out;
+    transition: flex 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 }
 
@@ -3198,3 +3210,320 @@ body.js-enabled .reveal:not(h1, h2).is-revealed {
     padding-left: 0;
   }
 }
+
+/* =================================================
+   LANGUAGE TOGGLE BUTTON
+   ================================================= */
+
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.4rem;
+  height: 1.9rem;
+  padding: 0 0.7rem;
+  border: 1px solid rgba(244, 241, 232, 0.28);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--paper);
+  font-family: var(--body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease);
+  opacity: 0.85;
+}
+
+.lang-toggle:hover {
+  border-color: var(--brass);
+  background: rgba(182, 136, 45, 0.12);
+  color: var(--brass);
+  opacity: 1;
+}
+
+.lang-toggle::after { display: none !important; }
+
+/* =================================================
+   ARABIC / RTL OVERRIDES
+   ================================================= */
+
+/* Arabic font stack — applied when lang="ar" is set */
+:root[lang="ar"] {
+  --body:    'Cairo', sans-serif;
+  --display: 'Cairo', sans-serif;
+}
+
+/* All text uses Cairo in Arabic mode */
+html[lang="ar"] body,
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] p,
+html[lang="ar"] a,
+html[lang="ar"] span,
+html[lang="ar"] button,
+html[lang="ar"] blockquote,
+html[lang="ar"] cite {
+  font-family: 'Cairo', sans-serif;
+  letter-spacing: 0;           /* Arabic doesn't use letter-spacing */
+}
+
+/* Scouts trail: move to the right side in RTL */
+html[lang="ar"] .scouts-trail {
+  left: auto;
+  right: 0;
+}
+
+/* Hero content: right-align text in RTL */
+html[lang="ar"] .hero-content {
+  text-align: right;
+}
+
+html[lang="ar"] .hero-deck-wrapper {
+  direction: rtl;
+}
+
+html[lang="ar"] .hero-caption {
+  left: auto;
+  right: var(--gutter);
+  text-align: right;
+}
+
+/* Chapter header: flip text alignment */
+html[lang="ar"] .chapter-header-content {
+  text-align: right;
+}
+
+html[lang="ar"] .chapter-bg-word {
+  right: auto;
+  left: 0;
+  text-align: left;
+}
+
+/* Editorial split: mirror the grid for RTL */
+html[lang="ar"] .editorial-split {
+  direction: rtl;
+}
+
+html[lang="ar"] .split-text {
+  text-align: right;
+}
+
+/* About statement quote */
+html[lang="ar"] .about-statement {
+  text-align: right;
+}
+
+/* About pillars */
+html[lang="ar"] .about-pillar {
+  text-align: right;
+}
+
+/* Metric cards */
+html[lang="ar"] .metric-card {
+  text-align: right;
+}
+
+/* Testimonial */
+html[lang="ar"] .testimonial-quote,
+html[lang="ar"] .testimonial-inner cite {
+  text-align: right;
+}
+
+/* Partners columns */
+html[lang="ar"] .clean-columns {
+  direction: rtl;
+}
+html[lang="ar"] .clean-column-item {
+  text-align: right;
+}
+
+/* Programs accordion — keep flex layout LTR, only flip text */
+html[lang="ar"] .accordion-gallery {
+  direction: ltr;
+}
+html[lang="ar"] .accordion-item-content,
+html[lang="ar"] .accordion-item-title-collapsed {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Expeditions horizontal journey — keep scroll layout LTR, only flip text */
+html[lang="ar"] .horizontal-journey,
+html[lang="ar"] .journey-wrapper {
+  direction: ltr;
+}
+html[lang="ar"] .journey-content {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Ceremony section — lock everything to LTR to prevent grid overflow */
+html[lang="ar"] #ceremony {
+  direction: ltr;
+}
+
+/* Flip only the text elements back to RTL */
+html[lang="ar"] #ceremony .chapter-header-content,
+html[lang="ar"] #ceremony .chapter-number,
+html[lang="ar"] #ceremony .chapter-title,
+html[lang="ar"] #ceremony .chapter-narrative,
+html[lang="ar"] .cwall-hero-caption,
+html[lang="ar"] .cwall-item > span {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Contact section */
+html[lang="ar"] .contact-body {
+  border-left: none;
+  border-right: 2px solid var(--brass);
+  padding-left: 0;
+  padding-right: 1.25rem;
+}
+
+html[lang="ar"] .contact-inner {
+  text-align: right;
+}
+
+html[lang="ar"] .contact-details {
+  direction: rtl;
+}
+
+html[lang="ar"] .contact-detail {
+  border-left: none;
+  border-right: 1px solid rgba(244, 241, 232, 0.1);
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+
+html[lang="ar"] .contact-detail:first-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+/* Footer */
+html[lang="ar"] .site-footer {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Nav links in RTL */
+html[lang="ar"] .nav-links {
+  direction: rtl;
+}
+
+/* Loader wordmark */
+html[lang="ar"] .loader-wordmark {
+  direction: rtl;
+}
+
+/* Headline size adjustment for Arabic — Cairo needs more line-height */
+html[lang="ar"] .massive-headline {
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  line-height: 1.2;
+}
+
+html[lang="ar"] .chapter-title {
+  line-height: 1.25;
+}
+
+/* Chapter number labels — keep as decorative */
+html[lang="ar"] .chapter-number {
+  letter-spacing: 0.05em;
+}
+
+/* Gallery marquee — keep animation direction consistent */
+html[lang="ar"] .marquee-gallery,
+html[lang="ar"] .marquee-row {
+  direction: ltr;
+}
+
+/* Metric grid — keep card layout, flip text inside */
+html[lang="ar"] .metric-grid {
+  direction: ltr;
+}
+html[lang="ar"] .metric-card {
+  direction: rtl;
+}
+
+/* Smooth language transition */
+html {
+  transition: none; /* don't animate direction change */
+}
+
+/* =================================================
+   RTL — MOBILE OVERRIDES
+   ================================================= */
+
+@media (max-width: 860px) {
+  /* Mobile nav in RTL: links right-aligned, hamburger on left */
+  html[lang="ar"] .site-nav {
+    flex-direction: row-reverse;
+  }
+  html[lang="ar"] .nav-links {
+    text-align: right;
+  }
+  html[lang="ar"] .nav-links a {
+    text-align: right;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hero text stays right in RTL on mobile */
+  html[lang="ar"] .hero-content {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  /* Contact body border flips on mobile too */
+  html[lang="ar"] .contact-body {
+    border-left: none;
+    border-right: 2px solid var(--brass);
+    padding-left: 0;
+    padding-right: 1rem;
+  }
+
+  /* Footer RTL on mobile */
+  html[lang="ar"] .site-footer {
+    text-align: right;
+  }
+
+  /* About pillars RTL on mobile */
+  html[lang="ar"] .about-pillars {
+    direction: rtl;
+  }
+
+  /* Headline mobile size for Arabic */
+  html[lang="ar"] .massive-headline {
+    font-size: clamp(2.8rem, 14vw, 5rem);
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 560px) {
+  /* Ceremony wall single column — direction doesn't matter but lock it */
+  html[lang="ar"] #ceremony {
+    direction: ltr;
+  }
+
+  /* Accordion single column — keep ltr */
+  html[lang="ar"] .accordion-gallery {
+    direction: ltr;
+  }
+
+  /* Contact details stacked */
+  html[lang="ar"] .contact-details {
+    direction: rtl;
+  }
+  html[lang="ar"] .contact-detail {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid rgba(244,241,232,0.1);
+    padding-bottom: 1rem;
+    text-align: right;
+  }
+}
+

@@ -31,7 +31,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -64,9 +64,9 @@
       </div>
     </div>
     <div class="loader-wordmark">
-      <p class="loader-name">Al-Salam Scouting Groups</p>
+      <p class="loader-name" data-i18n="loader-name">Al-Salam Scouting Groups</p>
       <div class="loader-divider"><span></span></div>
-      <p class="loader-since">Since 1977</p>
+      <p class="loader-since" data-i18n="loader-since">Since 1977</p>
     </div>
   </div>
 
@@ -82,14 +82,15 @@
       <span></span>
     </button>
     <div class="nav-links">
-      <a href="#about">Who We Are</a>
-      <a href="#impact">Impact</a>
-      <a href="#partners">Partners</a>
-      <a href="#programs">Programs</a>
-      <a href="#camps">Expeditions</a>
-      <a href="#ceremony">Ceremony</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#get-involved" class="nav-contact">Contact Us</a>
+      <a href="#about"       data-i18n="nav-about">Who We Are</a>
+      <a href="#impact"      data-i18n="nav-impact">Impact</a>
+      <a href="#partners"    data-i18n="nav-partners">Partners</a>
+      <a href="#programs"    data-i18n="nav-programs">Programs</a>
+      <a href="#camps"       data-i18n="nav-camps">Expeditions</a>
+      <a href="#ceremony"    data-i18n="nav-ceremony">Ceremony</a>
+      <a href="#gallery"     data-i18n="nav-gallery">Gallery</a>
+      <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language"><span data-i18n="lang-toggle">ع</span></button>
+      <a href="#get-involved" class="nav-contact" data-i18n="nav-contact">Contact Us</a>
     </div>
   </nav>
 
@@ -119,12 +120,12 @@
       </div>
 
       <div class="hero-content">
-        <h1 class="massive-headline">Building<br>Leaders</h1>
+        <h1 class="massive-headline" data-i18n-html="hero-headline">Building<br>Leaders</h1>
         <div class="hero-deck-wrapper editorial-grid">
-          <p class="report-kicker">Living Impact Report</p>
+          <p class="report-kicker" data-i18n="hero-kicker">Living Impact Report</p>
           <div class="hero-deck">
-            <p>Since 1977, Al-Salam Scouting Groups has helped young people practice leadership in real settings: camps, ceremonies, service projects, and community life.</p>
-            <a href="#partners" class="text-link">Explore partnership opportunities</a>
+            <p data-i18n="hero-body">Since 1977, Al-Salam Scouting Groups has helped young people practice leadership in real settings: camps, ceremonies, service projects, and community life.</p>
+            <a href="#partners" class="text-link" data-i18n="hero-link">Explore partnership opportunities</a>
           </div>
         </div>
       </div>
@@ -137,19 +138,19 @@
       </div>
 
       <aside class="hero-caption">
-        <span>Cairo, Egypt</span>
-        <span>Youth development since 1977</span>
+        <span data-i18n="hero-caption-city">Cairo, Egypt</span>
+        <span data-i18n="hero-caption-year">Youth development since 1977</span>
       </aside>
     </section>
 
     <!-- ═══════════════════════════ CHAPTER 01 — ABOUT ═══════════════════════════ -->
     <section id="about" class="chapter chapter-paper">
       <header class="chapter-divider reveal">
-        <div class="chapter-bg-word" aria-hidden="true">IDENTITY</div>
+        <div class="chapter-bg-word" aria-hidden="true" data-i18n="ch01-bg">IDENTITY</div>
         <div class="chapter-header-content">
-          <span class="chapter-number">CHAPTER 01</span>
-          <h2 class="chapter-title">Growing People Before Skills</h2>
-          <p class="chapter-narrative">A scouting community shaped by discipline, care, and real responsibility. SSG develops young people through leadership, teamwork, and character-building experiences.</p>
+          <span class="chapter-number" data-i18n="ch01-number">CHAPTER 01</span>
+          <h2 class="chapter-title" data-i18n="ch01-title">Growing People Before Skills</h2>
+          <p class="chapter-narrative" data-i18n="ch01-narrative">A scouting community shaped by discipline, care, and real responsibility. SSG develops young people through leadership, teamwork, and character-building experiences.</p>
         </div>
         <figure class="chapter-hero-image">
           <img loading="lazy" decoding="async" src="assets/images/optimized-web/Hero/HERO_04_Leader_With_Scouts.jpg" alt="Scouts gathered in community action">
@@ -164,24 +165,24 @@
           </figure>
         </article>
         <article class="editorial-split-item split-text reveal">
-          <span class="chapter-number">01</span>
-          <h3 class="split-heading">Identity</h3>
-          <p class="chapter-narrative" style="margin: 0 0 0.75rem;">A scouting community shaped by discipline, care, and real responsibility since 1977.</p>
-          <p class="split-detail">Built on the belief that young people grow best through doing — not watching. Every camp, ceremony, and service project is designed to develop a capable, confident human being.</p>
+          <span class="chapter-number" data-i18n="about-id-num">01</span>
+          <h3 class="split-heading" data-i18n="about-id-head">Identity</h3>
+          <p class="chapter-narrative" style="margin: 0 0 0.75rem;" data-i18n="about-id-sub">A scouting community shaped by discipline, care, and real responsibility since 1977.</p>
+          <p class="split-detail" data-i18n="about-id-body">Built on the belief that young people grow best through doing — not watching. Every camp, ceremony, and service project is designed to develop a capable, confident human being.</p>
         </article>
 
         <!-- Full-width founding statement -->
         <div class="about-statement reveal">
-          <span>Est. 1977</span>
-          <p>"We don't just build scouts — we build the people who build communities."</p>
+          <span data-i18n="about-est">Est. 1977</span>
+          <p data-i18n="about-quote">"We don't just build scouts — we build the people who build communities."</p>
         </div>
 
         <!-- Mission -->
         <article class="editorial-split-item split-text reveal">
-          <span class="chapter-number">02</span>
-          <h3 class="split-heading">Mission</h3>
-          <p class="chapter-narrative" style="margin: 0 0 0.75rem;">Prepare disciplined, helpful, confident young people ready to serve their community.</p>
-          <p class="split-detail">We measure success not in trophies, but in the quiet confidence scouts carry into adulthood — the kind earned through real responsibility and shared hardship.</p>
+          <span class="chapter-number" data-i18n="about-mis-num">02</span>
+          <h3 class="split-heading" data-i18n="about-mis-head">Mission</h3>
+          <p class="chapter-narrative" style="margin: 0 0 0.75rem;" data-i18n="about-mis-sub">Prepare disciplined, helpful, confident young people ready to serve their community.</p>
+          <p class="split-detail" data-i18n="about-mis-body">We measure success not in trophies, but in the quiet confidence scouts carry into adulthood — the kind earned through real responsibility and shared hardship.</p>
         </article>
         <article class="editorial-split-item reveal">
           <figure class="split-photo">
@@ -195,18 +196,18 @@
       <div class="about-pillars">
         <div class="about-pillar reveal">
           <span>01</span>
-          <h4>Character First</h4>
-          <p>We develop the person before the skill. Discipline, honesty, and care come before any badge or title.</p>
+          <h4 data-i18n="pillar1-title">Character First</h4>
+          <p data-i18n="pillar1-body">We develop the person before the skill. Discipline, honesty, and care come before any badge or title.</p>
         </div>
         <div class="about-pillar reveal">
           <span>02</span>
-          <h4>Community Above Self</h4>
-          <p>Every program connects young people to a responsibility larger than themselves — service is not optional.</p>
+          <h4 data-i18n="pillar2-title">Community Above Self</h4>
+          <p data-i18n="pillar2-body">Every program connects young people to a responsibility larger than themselves — service is not optional.</p>
         </div>
         <div class="about-pillar reveal">
           <span>03</span>
-          <h4>Growth Through Challenge</h4>
-          <p>Real growth happens outside comfort zones — in wilderness camps, public ceremonies, and hands-on service.</p>
+          <h4 data-i18n="pillar3-title">Growth Through Challenge</h4>
+          <p data-i18n="pillar3-body">Real growth happens outside comfort zones — in wilderness camps, public ceremonies, and hands-on service.</p>
         </div>
       </div>
     </section>
@@ -214,11 +215,11 @@
     <!-- ═══════════════════════════ CHAPTER 02 — IMPACT ══════════════════════════ -->
     <section id="impact" class="chapter chapter-forest">
       <header class="chapter-divider reveal">
-        <div class="chapter-bg-word" aria-hidden="true">PROOF</div>
+        <div class="chapter-bg-word" aria-hidden="true" data-i18n="ch02-bg">PROOF</div>
         <div class="chapter-header-content">
-          <span class="chapter-number">CHAPTER 02</span>
-          <h2 class="chapter-title">Proof That Growth Compounds</h2>
-          <p class="chapter-narrative">Growth becomes visible when confidence turns into action. SSG's work is measured in continuity and the courage to participate.</p>
+          <span class="chapter-number" data-i18n="ch02-number">CHAPTER 02</span>
+          <h2 class="chapter-title" data-i18n="ch02-title">Proof That Growth Compounds</h2>
+          <p class="chapter-narrative" data-i18n="ch02-narrative">Growth becomes visible when confidence turns into action. SSG's work is measured in continuity and the courage to participate.</p>
         </div>
         <figure class="chapter-hero-image">
           <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_08.jpg" alt="The full SSG community gathered — hundreds of scouts and families." style="object-position: center 25%">
@@ -227,23 +228,23 @@
       <div class="metric-grid">
         <div class="metric-card reveal" style="background-image: linear-gradient(rgba(13,37,28,0.85), rgba(13,37,28,0.9)), url('assets/images/optimized-web/Impact/IMPACT_01_Crowd.jpg'); background-size: cover; background-position: center;">
           <div class="metric-number" data-counter="250">0</div>
-          <h3>Active Scouts</h3>
-          <p>Building confidence and courage through shared responsibility.</p>
+          <h3 data-i18n="metric1-title">Active Scouts</h3>
+          <p data-i18n="metric1-body">Building confidence and courage through shared responsibility.</p>
         </div>
         <div class="metric-card reveal" style="background-image: linear-gradient(rgba(13,37,28,0.85), rgba(13,37,28,0.9)), url('assets/images/optimized-web/new/Impact_02_Legacy.jpg'); background-size: cover; background-position: center;">
           <div class="metric-number" data-counter="47">0</div>
-          <h3>Years of Legacy</h3>
-          <p>Continuous operation and community presence since 1977.</p>
+          <h3 data-i18n="metric2-title">Years of Legacy</h3>
+          <p data-i18n="metric2-body">Continuous operation and community presence since 1977.</p>
         </div>
         <div class="metric-card reveal" style="background-image: linear-gradient(rgba(13,37,28,0.85), rgba(13,37,28,0.9)), url('assets/images/optimized-web/new/Impact_03_Stages.jpg'); background-size: cover; background-position: center;">
           <div class="metric-number" data-counter="7">0</div>
-          <h3>Development Stages</h3>
-          <p>Specialized progressive programs from Beavers to Rovers.</p>
+          <h3 data-i18n="metric3-title">Development Stages</h3>
+          <p data-i18n="metric3-body">Specialized progressive programs from Beavers to Rovers.</p>
         </div>
         <div class="metric-card reveal" style="background-image: linear-gradient(rgba(13,37,28,0.85), rgba(13,37,28,0.9)), url('assets/images/optimized-web/Impact/IMPACT_03_Leadership.jpg'); background-size: cover; background-position: center;">
           <div class="metric-number" data-counter="5">0</div>
-          <h3>Specialized Committees</h3>
-          <p>Supporting the vision through dedicated operations and logistics.</p>
+          <h3 data-i18n="metric4-title">Specialized Committees</h3>
+          <p data-i18n="metric4-body">Supporting the vision through dedicated operations and logistics.</p>
         </div>
       </div>
     </section>
@@ -252,9 +253,9 @@
     <section class="testimonial-strip">
       <div class="testimonial-inner">
         <blockquote>
-          <p class="testimonial-quote reveal">"SSG gave my son the confidence to lead. After three years with the group, I watched him stand in front of 300 people and speak with certainty."</p>
+          <p class="testimonial-quote reveal" data-i18n="testimonial-quote">"SSG gave my son the confidence to lead. After three years with the group, I watched him stand in front of 300 people and speak with certainty."</p>
           <footer>
-            <cite class="reveal">Parent of a Scout — Al-Salam Scouting Groups, 2024</cite>
+            <cite class="reveal" data-i18n="testimonial-cite">Parent of a Scout — Al-Salam Scouting Groups, 2024</cite>
           </footer>
         </blockquote>
       </div>
@@ -263,11 +264,11 @@
     <!-- ═══════════════════════════ CHAPTER 03 — PARTNERS ═══════════════════════ -->
     <section id="partners" class="chapter chapter-paper partners">
       <header class="chapter-divider reveal">
-        <div class="chapter-bg-word" aria-hidden="true">TRUST</div>
+        <div class="chapter-bg-word" aria-hidden="true" data-i18n="ch03-bg">TRUST</div>
         <div class="chapter-header-content">
-          <span class="chapter-number">CHAPTER 03</span>
-          <h2 class="chapter-title">Growth Requires Allies</h2>
-          <p class="chapter-narrative">Partnerships help young people meet the wider professional world. We work with organizations that believe in education and positive social impact.</p>
+          <span class="chapter-number" data-i18n="ch03-number">CHAPTER 03</span>
+          <h2 class="chapter-title" data-i18n="ch03-title">Growth Requires Allies</h2>
+          <p class="chapter-narrative" data-i18n="ch03-narrative">Partnerships help young people meet the wider professional world. We work with organizations that believe in education and positive social impact.</p>
         </div>
         <figure class="chapter-hero-image">
           <img loading="lazy" decoding="async" src="assets/images/optimized-web/new/Partners_01_Access.jpg" alt="Educational and professional access for scouts.">
@@ -276,38 +277,38 @@
       <div class="clean-columns">
         <article class="clean-column-item reveal">
           <span>01</span>
-          <h3>Educational Access</h3>
-          <p>Host visits, share professional knowledge, and open real workplaces to curious scouts.</p>
+          <h3 data-i18n="partner1-title">Educational Access</h3>
+          <p data-i18n="partner1-body">Host visits, share professional knowledge, and open real workplaces to curious scouts.</p>
         </article>
 
         <article class="clean-column-item reveal">
           <span>02</span>
-          <h3>Social Responsibility</h3>
-          <p>Support camps, community service, and annual events with visible human outcomes.</p>
+          <h3 data-i18n="partner2-title">Social Responsibility</h3>
+          <p data-i18n="partner2-body">Support camps, community service, and annual events with visible human outcomes.</p>
         </article>
 
         <article class="clean-column-item reveal">
           <span>03</span>
-          <h3>Leadership Development</h3>
-          <p>SSG works with organizations that believe in education and positive social impact.</p>
+          <h3 data-i18n="partner3-title">Leadership Development</h3>
+          <p data-i18n="partner3-body">SSG works with organizations that believe in education and positive social impact.</p>
         </article>
 
         <article class="clean-column-item reveal">
           <span>04</span>
-          <h3>Long-Term Legacy</h3>
-          <p>Build sustainable programs that continue beyond a single event or season.</p>
+          <h3 data-i18n="partner4-title">Long-Term Legacy</h3>
+          <p data-i18n="partner4-body">Build sustainable programs that continue beyond a single event or season.</p>
         </article>
       </div>
 
       <div class="partner-logos reveal">
-        <p class="partner-logos-label">Current &amp; past partner organizations</p>
+        <p class="partner-logos-label" data-i18n-html="partners-label">Current &amp; past partner organizations</p>
         <div class="logo-grid">
-          <div class="logo-slot"><span>Your Logo Here</span></div>
-          <div class="logo-slot"><span>Your Logo Here</span></div>
-          <div class="logo-slot"><span>Your Logo Here</span></div>
-          <div class="logo-slot"><span>Your Logo Here</span></div>
-          <div class="logo-slot"><span>Your Logo Here</span></div>
-          <div class="logo-slot"><span>Your Logo Here</span></div>
+          <div class="logo-slot"><span data-i18n="logo-slot">Your Logo Here</span></div>
+          <div class="logo-slot"><span data-i18n="logo-slot">Your Logo Here</span></div>
+          <div class="logo-slot"><span data-i18n="logo-slot">Your Logo Here</span></div>
+          <div class="logo-slot"><span data-i18n="logo-slot">Your Logo Here</span></div>
+          <div class="logo-slot"><span data-i18n="logo-slot">Your Logo Here</span></div>
+          <div class="logo-slot"><span data-i18n="logo-slot">Your Logo Here</span></div>
         </div>
       </div>
     </section>
@@ -315,11 +316,11 @@
     <!-- ═══════════════════════════ CHAPTER 04 — PROGRAMS ══════════════════════ -->
     <section id="programs" class="chapter chapter-paper programs">
       <header class="chapter-divider reveal">
-        <div class="chapter-bg-word" aria-hidden="true">ACTION</div>
+        <div class="chapter-bg-word" aria-hidden="true" data-i18n="ch04-bg">ACTION</div>
         <div class="chapter-header-content">
-          <span class="chapter-number">CHAPTER 04</span>
-          <h2 class="chapter-title">Learning By Doing</h2>
-          <p class="chapter-narrative">Programs designed as lived experience, not classroom theory. Scouts learn outdoors, on stage, inside communities, and through visits that connect curiosity with real professional life.</p>
+          <span class="chapter-number" data-i18n="ch04-number">CHAPTER 04</span>
+          <h2 class="chapter-title" data-i18n="ch04-title">Learning By Doing</h2>
+          <p class="chapter-narrative" data-i18n="ch04-narrative">Programs designed as lived experience, not classroom theory. Scouts learn outdoors, on stage, inside communities, and through visits that connect curiosity with real professional life.</p>
         </div>
         <figure class="chapter-hero-image">
           <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_010.jpg" alt="Scouts learning through a group activity." style="object-position: center 35%">
@@ -328,41 +329,41 @@
       <div class="accordion-gallery">
         <article class="accordion-item reveal">
           <img loading="lazy" decoding="async" src="assets/images/optimized-web/Programs/PROGRAM_01_Camping.jpg" alt="Scouts during a camping program.">
-          <div class="accordion-item-title-collapsed">Core Scouting</div>
+          <div class="accordion-item-title-collapsed" data-i18n="prog1-label">Core Scouting</div>
           <div class="accordion-item-content">
             <span>01</span>
-            <h3>Core Scouting</h3>
-            <p>Age-appropriate activities across beavers, cubs, scouts, guides, seniors, and rovers.</p>
+            <h3 data-i18n="prog1-title">Core Scouting</h3>
+            <p data-i18n="prog1-body">Age-appropriate activities across beavers, cubs, scouts, guides, seniors, and rovers.</p>
           </div>
         </article>
 
         <article class="accordion-item reveal">
           <img loading="lazy" decoding="async" src="assets/images/optimized-web/Programs/PROGRAM_05_Educational_Visit.jpg" alt="Scouts during an educational visit.">
-          <div class="accordion-item-title-collapsed">Exposure</div>
+          <div class="accordion-item-title-collapsed" data-i18n="prog2-label">Exposure</div>
           <div class="accordion-item-content">
             <span>02</span>
-            <h3>Educational Exposure</h3>
-            <p>Visits, workshops, and career encounters.</p>
+            <h3 data-i18n="prog2-title">Educational Exposure</h3>
+            <p data-i18n="prog2-body">Visits, workshops, and career encounters.</p>
           </div>
         </article>
 
         <article class="accordion-item reveal">
           <img loading="lazy" decoding="async" src="assets/images/optimized-web/Programs/PROGRAM_06_Teamwork.jpg" alt="Scouts completing a teamwork challenge." style="object-position: center 30%">
-          <div class="accordion-item-title-collapsed">Teamwork</div>
+          <div class="accordion-item-title-collapsed" data-i18n="prog3-label">Teamwork</div>
           <div class="accordion-item-content">
             <span>03</span>
-            <h3>Teamwork</h3>
-            <p>Challenges that teach listening and trust.</p>
+            <h3 data-i18n="prog3-title">Teamwork</h3>
+            <p data-i18n="prog3-body">Challenges that teach listening and trust.</p>
           </div>
         </article>
 
         <article class="accordion-item reveal">
           <img loading="lazy" decoding="async" src="assets/images/optimized-web/Programs/PROGRAM_03_Service.jpg" alt="SSG members participating in a service activity.">
-          <div class="accordion-item-title-collapsed">Service</div>
+          <div class="accordion-item-title-collapsed" data-i18n="prog4-label">Service</div>
           <div class="accordion-item-content">
             <span>04</span>
-            <h3>Service</h3>
-            <p>Community projects that make responsibility tangible and visible.</p>
+            <h3 data-i18n="prog4-title">Service</h3>
+            <p data-i18n="prog4-body">Community projects that make responsibility tangible and visible.</p>
           </div>
         </article>
       </div>
@@ -371,11 +372,11 @@
     <!-- ══════════════════════════ CHAPTER 05 — EXPEDITIONS ═════════════════════ -->
     <section id="camps" class="chapter expedition">
       <header class="chapter-divider reveal">
-        <div class="chapter-bg-word" aria-hidden="true">ADVENTURE</div>
+        <div class="chapter-bg-word" aria-hidden="true" data-i18n="ch05-bg">ADVENTURE</div>
         <div class="chapter-header-content">
-          <span class="chapter-number">CHAPTER 05</span>
-          <h2 class="chapter-title">Beyond Familiar Horizons</h2>
-          <p class="chapter-narrative">A single expedition can teach more about leadership than months of classroom instruction.</p>
+          <span class="chapter-number" data-i18n="ch05-number">CHAPTER 05</span>
+          <h2 class="chapter-title" data-i18n="ch05-title">Beyond Familiar Horizons</h2>
+          <p class="chapter-narrative" data-i18n="ch05-narrative">A single expedition can teach more about leadership than months of classroom instruction.</p>
         </div>
         <figure class="chapter-hero-image">
           <img loading="lazy" decoding="async" src="assets/images/optimized-web/Camps/Camp_01.jpg" alt="Scouts gathered outdoors in nature.">
@@ -390,8 +391,8 @@
             </div>
             <div class="journey-content">
               <span>01</span>
-              <h3>Exploration</h3>
-              <p>When scouts leave the city, they meet new landscapes, new limits, and new versions of themselves.</p>
+              <h3 data-i18n="journey1-title">Exploration</h3>
+              <p data-i18n="journey1-body">When scouts leave the city, they meet new landscapes, new limits, and new versions of themselves.</p>
             </div>
           </article>
           <article class="journey-card reveal">
@@ -400,8 +401,8 @@
             </div>
             <div class="journey-content">
               <span>02</span>
-              <h3>Challenge</h3>
-              <p>Weather, distance, logistics, and shared problem-solving.</p>
+              <h3 data-i18n="journey2-title">Challenge</h3>
+              <p data-i18n="journey2-body">Weather, distance, logistics, and shared problem-solving.</p>
             </div>
           </article>
           <article class="journey-card reveal">
@@ -410,8 +411,8 @@
             </div>
             <div class="journey-content">
               <span>03</span>
-              <h3>Teamwork</h3>
-              <p>Leadership becomes visible in how scouts care for one another.</p>
+              <h3 data-i18n="journey3-title">Teamwork</h3>
+              <p data-i18n="journey3-body">Leadership becomes visible in how scouts care for one another.</p>
             </div>
           </article>
           <article class="journey-card reveal">
@@ -420,8 +421,8 @@
             </div>
             <div class="journey-content">
               <span>04</span>
-              <h3>Transformation</h3>
-              <p>The moment effort turns into confidence and memory.</p>
+              <h3 data-i18n="journey4-title">Transformation</h3>
+              <p data-i18n="journey4-body">The moment effort turns into confidence and memory.</p>
             </div>
           </article>
         </div>
@@ -431,11 +432,11 @@
     <!-- ══════════════════════════ CHAPTER 06 — CEREMONY ════════════════════════ -->
     <section id="ceremony" class="chapter ceremony">
       <header class="chapter-divider reveal">
-        <div class="chapter-bg-word" aria-hidden="true">RECOGNITION</div>
+        <div class="chapter-bg-word" aria-hidden="true" data-i18n="ch06-bg">RECOGNITION</div>
         <div class="chapter-header-content">
-          <span class="chapter-number">CHAPTER 06</span>
-          <h2 class="chapter-title">Where Achievement Becomes Visible</h2>
-          <p class="chapter-narrative">The closing ceremony gathers scouts, families, leaders, and partners around a year of work. Performance and shared pride become evidence of progress.</p>
+          <span class="chapter-number" data-i18n="ch06-number">CHAPTER 06</span>
+          <h2 class="chapter-title" data-i18n="ch06-title">Where Achievement Becomes Visible</h2>
+          <p class="chapter-narrative" data-i18n="ch06-narrative">The closing ceremony gathers scouts, families, leaders, and partners around a year of work. Performance and shared pride become evidence of progress.</p>
         </div>
         <figure class="chapter-hero-image">
           <img loading="lazy" decoding="async" src="assets/images/optimized-web/Hero/HERO_05_Closing_Ceremony_Wide.jpg" alt="The SSG closing ceremony stage at night.">
@@ -448,9 +449,9 @@
         <div class="cwall-hero reveal">
           <img loading="lazy" decoding="async" src="assets/images/optimized-web/Ceremony/CEREMONY_04_Performance.jpg" alt="Performance on Stage" style="object-position: center 20%">
           <div class="cwall-hero-caption">
-            <span>Performance</span>
-            <h3>The Stage Moment</h3>
-            <p>Scouts performing in front of families, leaders, and community — confidence made visible.</p>
+            <span data-i18n="cer-perf-label">Performance</span>
+            <h3 data-i18n="cer-perf-title">The Stage Moment</h3>
+            <p data-i18n="cer-perf-body">Scouts performing in front of families, leaders, and community — confidence made visible.</p>
           </div>
         </div>
 
@@ -458,15 +459,15 @@
         <div class="cwall-trio">
           <div class="cwall-item reveal">
             <img loading="lazy" decoding="async" src="assets/images/optimized-web/Ceremony/CEREMONY_01_Opening.jpg" alt="Opening Ceremony" style="object-position: center 15%">
-            <span>Recognition</span>
+            <span data-i18n="cer-recog">Recognition</span>
           </div>
           <div class="cwall-item cwall-item--wide reveal">
             <img loading="lazy" decoding="async" src="assets/images/optimized-web/Ceremony/CEREMONY_02_Crowd.jpg" alt="The Ceremony Crowd">
-            <span>The Crowd</span>
+            <span data-i18n="cer-crowd">The Crowd</span>
           </div>
           <div class="cwall-item reveal">
             <img loading="lazy" decoding="async" src="assets/images/optimized-web/Ceremony/CEREMONY_03_Awards.jpg" alt="Awards Ceremony" style="object-position: center 10%">
-            <span>Awards</span>
+            <span data-i18n="cer-awards">Awards</span>
           </div>
         </div>
 
@@ -474,15 +475,15 @@
         <div class="cwall-trio cwall-trio--alt">
           <div class="cwall-item reveal">
             <img loading="lazy" decoding="async" src="assets/images/optimized-web/Ceremony/CEREMONY_05_Families.jpg" alt="Families attending the ceremony">
-            <span>Families</span>
+            <span data-i18n="cer-families">Families</span>
           </div>
           <div class="cwall-item cwall-item--wide reveal">
             <img loading="lazy" decoding="async" src="assets/images/optimized-web/Ceremony/CEREMONY_06_GroupPhoto.jpg" alt="Group Photo">
-            <span>Group Photo</span>
+            <span data-i18n="cer-group">Group Photo</span>
           </div>
           <div class="cwall-item reveal">
             <img loading="lazy" decoding="async" src="assets/images/optimized-web/Ceremony/CEREMONY_07_Closing.jpg" alt="Closing Ceremony">
-            <span>Legacy</span>
+            <span data-i18n="cer-legacy">Legacy</span>
           </div>
         </div>
 
@@ -492,11 +493,11 @@
     <!-- ════════════════════════════ CHAPTER 07 — GALLERY ═══════════════════════ -->
     <section id="gallery" class="chapter gallery chapter-forest">
       <header class="chapter-divider reveal">
-        <div class="chapter-bg-word" aria-hidden="true">CULTURE</div>
+        <div class="chapter-bg-word" aria-hidden="true" data-i18n="ch07-bg">CULTURE</div>
         <div class="chapter-header-content">
-          <span class="chapter-number">CHAPTER 07</span>
-          <h2 class="chapter-title">Memories &amp; Culture</h2>
-          <p class="chapter-narrative">The archive is a record of people becoming capable together. Documentation of every journey, challenge, and celebration.</p>
+          <span class="chapter-number" data-i18n="ch07-number">CHAPTER 07</span>
+          <h2 class="chapter-title" data-i18n-html="ch07-title">Memories &amp; Culture</h2>
+          <p class="chapter-narrative" data-i18n="ch07-narrative">The archive is a record of people becoming capable together. Documentation of every journey, challenge, and celebration.</p>
         </div>
         <figure class="chapter-hero-image">
           <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_02.jpg" alt="Scouting archive" style="object-position: center 15%">
@@ -577,8 +578,8 @@
   </main>
 
   <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
-    <button class="lightbox-close" type="button" aria-label="Close image viewer">Close</button>
-    <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous image">Prev</button>
+    <button class="lightbox-close" type="button" aria-label="Close image viewer" data-i18n="lb-close">Close</button>
+    <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous image" data-i18n="lb-prev">Prev</button>
     <figure class="lightbox-stage">
       <div class="lightbox-progress" aria-hidden="true"><span></span></div>
       <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" alt="">
@@ -589,7 +590,7 @@
         <p></p>
       </figcaption>
     </figure>
-    <button class="lightbox-nav lightbox-next" type="button" aria-label="Next image">Next</button>
+    <button class="lightbox-nav lightbox-next" type="button" aria-label="Next image" data-i18n="lb-next">Next</button>
   </div>
 
   <!-- ════════════════════════ GET INVOLVED ════════════════════════ -->
@@ -608,28 +609,28 @@
       <div class="contact-bg-word" aria-hidden="true">47</div>
       <div class="contact-inner">
 
-        <span class="contact-kicker reveal">Get Involved</span>
+        <span class="contact-kicker reveal" data-i18n="contact-kicker">Get Involved</span>
 
-        <h2 class="contact-headline reveal">
+        <h2 class="contact-headline reveal" data-i18n-html="contact-headline">
           Partner<br>With<br>Al&#8209;Salam<br>Scouting<br>Groups.
         </h2>
 
-        <p class="contact-body reveal">Your organization can support youth leadership through educational visits, event partnerships, or community initiatives. Every partnership shapes confident young people — and leaves a lasting legacy.</p>
+        <p class="contact-body reveal" data-i18n="contact-body">Your organization can support youth leadership through educational visits, event partnerships, or community initiatives. Every partnership shapes confident young people — and leaves a lasting legacy.</p>
 
-        <a href="mailto:programscommittee77@gmail.com" class="cta-button reveal">Start a Conversation</a>
+        <a href="mailto:programscommittee77@gmail.com" class="cta-button reveal" data-i18n="contact-cta">Start a Conversation</a>
 
         <div class="contact-details reveal">
           <div class="contact-detail">
-            <span>Email</span>
+            <span data-i18n="contact-email">Email</span>
             <a href="mailto:programscommittee77@gmail.com">programscommittee77@gmail.com</a>
           </div>
           <div class="contact-detail">
-            <span>Follow</span>
+            <span data-i18n="contact-follow">Follow</span>
             <a href="https://www.instagram.com/ssg_elrehab_club" target="_blank" rel="noreferrer">@ssg_elrehab_club</a>
           </div>
           <div class="contact-detail">
-            <span>Location</span>
-            <a href="https://maps.app.goo.gl/Bu4qUUBh5yRTmnxA7" target="_blank" rel="noreferrer">Rehab Sporting Club, Cairo</a>
+            <span data-i18n="contact-loc">Location</span>
+            <a href="https://maps.app.goo.gl/Bu4qUUBh5yRTmnxA7" target="_blank" rel="noreferrer" data-i18n="contact-loc-val">Rehab Sporting Club, Cairo</a>
           </div>
         </div>
 
@@ -641,8 +642,8 @@
   <footer id="contact" class="site-footer">
     <div>
       <img src="assets/images/ssg-logo.png" alt="SSG logo">
-      <p>Al-Salam Scouting Groups</p>
-      <span>Established 1977, Rehab Sporting Club, Cairo</span>
+      <p data-i18n="footer-name">Al-Salam Scouting Groups</p>
+      <span data-i18n="footer-est">Established 1977, Rehab Sporting Club, Cairo</span>
     </div>
     <a href="mailto:programscommittee77@gmail.com">programscommittee77@gmail.com</a>
     <div class="footer-social">
@@ -656,6 +657,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
   <script src="https://unpkg.com/split-type" defer></script>
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+  <script src="js/i18n.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>
