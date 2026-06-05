@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     { match: 'ABOUT_03_Community_Service', title: 'Service as Character', detail: 'Community Impact', story: 'Service projects give young people a practical way to understand responsibility beyond themselves.' },
     { match: 'IMPACT_01_Crowd', title: 'The Community Around the Work', detail: 'SSG Gathering', story: 'Impact becomes visible when scouts, families, and leaders gather around a shared culture.' },
     { match: 'IMPACT_03_Leadership', title: 'Leadership in Practice', detail: 'Youth Development', story: 'Confidence grows through repeated moments of responsibility, support, and public participation.' },
-    { match: 'HERO_02_Group_Celebration', title: 'The Culture of Belonging', detail: 'Community Celebration', story: 'The strongest programs become memories young people want to return to.' },
+    { match: 'HERO_06_Leaders', title: 'The People Behind the Programme', detail: 'SSG Leadership', story: 'Strong leaders build strong scouts — every expedition and ceremony begins here.' },
+    { match: 'HERO_08_Aswan', title: 'Expedition to Aswan', detail: 'SSG Field Trip', story: 'Taking scouts beyond the city builds independence, curiosity, and a sense of the wider world.' },
+    { match: 'HERO_07_Ceremony', title: 'A Year Celebrated', detail: 'SSG Annual Ceremony', story: 'Ceremony transforms a year of effort into a shared moment of recognition and pride.' },
     { match: 'PROGRAM_01_Camping', title: 'Core Scouting', detail: 'Outdoor Program', story: 'Camping gives scouts a practical environment for self-reliance, patience, and teamwork.' },
     { match: 'PROGRAM_05_Educational_Visit', title: 'Educational Exposure', detail: 'Professional Visit', story: 'Visits and workshops connect curiosity with real-world people, places, and possibilities.' },
     { match: 'PROGRAM_06_Teamwork', title: 'Teamwork Under Pressure', detail: 'Program Activity', story: 'Group challenges reveal how young people plan, communicate, and care for one another.' },
@@ -43,27 +45,32 @@ document.addEventListener('DOMContentLoaded', () => {
   if (hasGsap && !reduceMotion) {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-    // Set initial states
-    gsap.set('.loader-ring-fill', { strokeDashoffset: 427.3 });
-    gsap.set('.loader-accent', { opacity: 0, scale: 0, transformOrigin: '50% 50%' });
-    gsap.set('.loader-logo', { opacity: 0, scale: 0.88 });
-    gsap.set(['.loader-name', '.loader-since'], { opacity: 0, y: 10 });
+    // ── Initial states ──────────────────────────────────────────────────────
+    gsap.set('.loader-arm',          { strokeDashoffset: 76 });
+    gsap.set('.loader-ring-fill',    { strokeDashoffset: 477.5 });
+    gsap.set('.loader-tick',         { opacity: 0 });
+    gsap.set('.loader-accent',       { opacity: 0, scale: 0, transformOrigin: '50% 50%' });
+    gsap.set('.loader-logo',         { opacity: 0, scale: 0.85 });
+    gsap.set(['.loader-name', '.loader-since'], { opacity: 0, y: 12 });
     gsap.set('.loader-divider span', { scaleX: 0 });
 
     gsap.timeline({ onComplete: finishLoading })
-      // Ring draws itself
-      .to('.loader-ring-fill', { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut' })
-      // Logo fades in while ring is drawing
-      .to('.loader-logo', { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.4)' }, '-=1.1')
-      // Cardinal dots pop in near end of ring
-      .to('.loader-accent', { opacity: 1, scale: 1, duration: 0.25, stagger: 0.07, ease: 'back.out(2)' }, '-=0.45')
-      // Divider line sweeps across
-      .to('.loader-divider span', { scaleX: 1, duration: 0.45, ease: 'power3.inOut' }, '-=0.1')
-      // Text reveals
-      .to('.loader-name', { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }, '-=0.25')
-      .to('.loader-since', { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }, '-=0.15')
-      // Whole screen fades out
-      .to('#loading-screen', { opacity: 0, duration: 0.6, ease: 'power2.out' }, '+=0.35');
+      // 1. Cardinal arms extend from centre
+      .to('.loader-arm',         { strokeDashoffset: 0, duration: 0.35, stagger: 0.05, ease: 'power2.out' })
+      // 2. Main ring draws
+      .to('.loader-ring-fill',   { strokeDashoffset: 0, duration: 0.95, ease: 'power2.inOut' }, '-=0.2')
+      // 3. Logo scales in while ring is drawing
+      .to('.loader-logo',        { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.4)' }, '-=0.75')
+      // 4. Diagonal ticks
+      .to('.loader-tick',        { opacity: 1, duration: 0.15, stagger: 0.05 }, '-=0.35')
+      // 5. Cardinal accent dots
+      .to('.loader-accent',      { opacity: 1, scale: 1, duration: 0.2, stagger: 0.06, ease: 'back.out(2.5)' }, '-=0.25')
+      // 6. Divider + text
+      .to('.loader-divider span',{ scaleX: 1, duration: 0.3, ease: 'power3.inOut' }, '-=0.05')
+      .to('.loader-name',        { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' }, '-=0.2')
+      .to('.loader-since',       { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out' }, '-=0.12')
+      // 7. Screen fades out
+      .to('#loading-screen',     { opacity: 0, duration: 0.5, ease: 'power2.out' }, '+=0.25');
   } else {
     finishLoading();
   }
@@ -363,26 +370,105 @@ document.addEventListener('DOMContentLoaded', () => {
     const dots   = Array.from(document.querySelectorAll('.hero-dot'));
     if (slides.length < 2) return;
 
-    let current = 0;
-    let timer   = null;
-    const INTERVAL = 6000; // ms per slide
+    const INTERVAL      = 6000;  // ms between slides
+    const FADE_DURATION = 1.2;   // crossfade seconds
+    const KB_DURATION   = 9;     // Ken Burns seconds
+    const KB_FROM       = 1.06;
+    const KB_TO         = 1.0;
 
+    let current     = 0;
+    let timer       = null;
+    let isAnimating = false;
+
+    // One GSAP tween slot per slide for Ken Burns
+    const kbTweens = new Array(slides.length).fill(null);
+
+    function startKenBurns(idx) {
+      const img = slides[idx].querySelector('img');
+      if (!img) return;
+      // Always restart from the zoomed-in position
+      gsap.set(img, { scale: KB_FROM });
+      kbTweens[idx] = gsap.to(img, {
+        scale: KB_TO,
+        duration: KB_DURATION,
+        ease: 'power2.out',
+      });
+    }
+
+    function pauseKenBurns(idx) {
+      // Pause holds the current scale — no snap, no reset
+      if (kbTweens[idx]) { kbTweens[idx].pause(); kbTweens[idx] = null; }
+    }
+
+    function resetKenBurns(idx) {
+      // Called after the slide has fully faded out — ready for next cycle
+      const img = slides[idx].querySelector('img');
+      if (img) gsap.set(img, { scale: KB_FROM });
+    }
+
+    // ── Initialise ──────────────────────────────────────────────────────────
+    if (hasGsap) {
+      slides.forEach((s, i) => {
+        gsap.set(s, { opacity: i === 0 ? 1 : 0, zIndex: 0 });
+        gsap.set(s.querySelector('img'), { scale: KB_FROM });
+      });
+      if (!reduceMotion) startKenBurns(0);
+    } else {
+      slides[0].style.opacity = '1';
+    }
+
+    // ── Transition ──────────────────────────────────────────────────────────
     function goTo(index) {
-      const prev = current;
-      current = ((index % slides.length) + slides.length) % slides.length;
-      if (prev === current) return;
+      const next = ((index % slides.length) + slides.length) % slides.length;
+      if (next === current || isAnimating) return;
 
-      // Deactivate old
-      slides[prev].classList.remove('is-active');
-      slides[prev].setAttribute('aria-hidden', 'true');
-      dots[prev].classList.remove('is-active');
-      dots[prev].setAttribute('aria-selected', 'false');
+      const prevIdx  = current;
+      current        = next;
+      isAnimating    = true;
 
-      // Activate new
-      slides[current].classList.add('is-active');
-      slides[current].setAttribute('aria-hidden', 'false');
+      const prevSlide = slides[prevIdx];
+      const nextSlide = slides[current];
+
+      // Z-stack: outgoing below, incoming on top
+      gsap.set(slides,    { zIndex: 0 });
+      gsap.set(prevSlide, { zIndex: 1 });
+      gsap.set(nextSlide, { zIndex: 2 });
+
+      // Freeze outgoing Ken Burns at whatever scale it's at
+      pauseKenBurns(prevIdx);
+
+      // ARIA + dot indicators
+      prevSlide.classList.remove('is-active');
+      prevSlide.setAttribute('aria-hidden', 'true');
+      dots[prevIdx].classList.remove('is-active');
+      dots[prevIdx].setAttribute('aria-selected', 'false');
+
+      nextSlide.classList.add('is-active');
+      nextSlide.setAttribute('aria-hidden', 'false');
       dots[current].classList.add('is-active');
       dots[current].setAttribute('aria-selected', 'true');
+
+      // Start Ken Burns on the incoming slide
+      if (!reduceMotion) startKenBurns(current);
+
+      if (hasGsap && !reduceMotion) {
+        // Crossfade in the incoming slide
+        gsap.to(nextSlide, {
+          opacity: 1,
+          duration: FADE_DURATION,
+          ease: 'power1.inOut',
+          onComplete: () => {
+            // Outgoing is now hidden — reset its scale for the next cycle
+            gsap.set(prevSlide, { opacity: 0, zIndex: 0 });
+            resetKenBurns(prevIdx);
+            isAnimating = false;
+          }
+        });
+      } else {
+        prevSlide.style.opacity = '0';
+        nextSlide.style.opacity = '1';
+        isAnimating = false;
+      }
     }
 
     function start() {
@@ -390,25 +476,20 @@ document.addEventListener('DOMContentLoaded', () => {
       timer = setInterval(() => goTo(current + 1), INTERVAL);
     }
 
-    function stop() {
-      clearInterval(timer);
-    }
+    function stop() { clearInterval(timer); }
 
     start();
 
-    // Pause on hover
     const heroEl = document.getElementById('hero');
     if (heroEl) {
       heroEl.addEventListener('mouseenter', stop,  { passive: true });
       heroEl.addEventListener('mouseleave', start, { passive: true });
     }
 
-    // Dot navigation
     dots.forEach((dot, i) => {
       dot.addEventListener('click', () => { stop(); goTo(i); start(); });
     });
 
-    // Keyboard: left/right arrows while focus is inside hero
     heroEl && heroEl.addEventListener('keydown', e => {
       if (e.key === 'ArrowLeft')  { stop(); goTo(current - 1); start(); }
       if (e.key === 'ArrowRight') { stop(); goTo(current + 1); start(); }

@@ -148,8 +148,8 @@ button {
 /* ── Emblem container ── */
 .loader-emblem {
   position: relative;
-  width: clamp(10rem, 20vw, 13.5rem);
-  height: clamp(10rem, 20vw, 13.5rem);
+  width: clamp(12rem, 24vw, 16rem);
+  height: clamp(12rem, 24vw, 16rem);
   display: grid;
   place-items: center;
 }
@@ -202,14 +202,11 @@ button {
   opacity: 0;
 }
 
-/* ── Logo wrapper carries the static offset; GSAP only animates the img ── */
+/* ── Logo wrapper — image is pre-centred so no offset needed ── */
 .loader-logo-wrap {
   position: relative;
   z-index: 1;
-  width: 50%;
-  /* shift left to compensate for image's rightward visual weight,
-     shift down so the gear/emblem sits at the ring's optical centre */
-  transform: translate(-4%, 6%);
+  width: 60%;
 }
 
 .loader-logo {
@@ -451,29 +448,15 @@ button {
 .hero-slide {
   position: absolute;
   inset: 0;
-  opacity: 0;
-  transition: opacity 1.4s ease-in-out;
-}
-
-.hero-slide.is-active {
-  opacity: 1;
+  opacity: 0;                    /* GSAP controls opacity via inline style */
+  will-change: opacity, transform; /* promote to own compositor layer       */
 }
 
 .hero-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.06);
-}
-
-/* Ken Burns: slow zoom-out on active slide */
-@keyframes hero-ken-burns {
-  from { transform: scale(1.06); }
-  to   { transform: scale(1.0);  }
-}
-
-.hero-slide.is-active img {
-  animation: hero-ken-burns 9s cubic-bezier(0.0, 0.0, 0.4, 1.0) forwards;
+  will-change: transform;  /* GPU layer — GSAP drives scale directly */
 }
 
 /* ── Slide indicators (dots) ── */
@@ -2987,11 +2970,7 @@ body.js-enabled .reveal:not(h1, h2).is-revealed {
     transform: translateY(20px); /* half the desktop travel */
   }
 
-  /* Disable Ken Burns on mobile — uses less GPU */
-  .hero-slide.is-active img {
-    animation: none;
-    transform: none;
-  }
+  /* Ken Burns is GSAP-driven — no CSS override needed on mobile */
 
   /* Faster accordion — less interpolation on mobile */
   .accordion-item {
