@@ -30,9 +30,38 @@
 </head>
 <body>
   <div id="loading-screen" aria-hidden="true">
-    <img src="assets/images/ssg-logo.png" alt="" class="loader-logo">
-    <div class="loader-rule"><span></span></div>
-    <p>Al-Salam Scouting Groups</p>
+    <div class="loader-emblem">
+      <svg class="loader-ring" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Faint outer track ring -->
+        <circle class="loader-outer-ring" cx="100" cy="100" r="90"/>
+        <!-- Cardinal arm lines extending from centre outward -->
+        <line class="loader-arm" x1="100" y1="100" x2="100" y2="24"/>
+        <line class="loader-arm" x1="100" y1="100" x2="176" y2="100"/>
+        <line class="loader-arm" x1="100" y1="100" x2="100" y2="176"/>
+        <line class="loader-arm" x1="100" y1="100" x2="24"  y2="100"/>
+        <!-- Main animated ring (r=76, circumference≈477.5) -->
+        <circle class="loader-ring-fill" cx="100" cy="100" r="76"/>
+        <!-- Diagonal tick marks at 45° intervals -->
+        <line class="loader-tick" x1="163.6" y1="36.4"  x2="158.7" y2="41.3"/>
+        <line class="loader-tick" x1="163.6" y1="163.6" x2="158.7" y2="158.7"/>
+        <line class="loader-tick" x1="36.4"  y1="163.6" x2="41.3"  y2="158.7"/>
+        <line class="loader-tick" x1="36.4"  y1="36.4"  x2="41.3"  y2="41.3"/>
+        <!-- Cardinal accent dots (just outside the outer ring) -->
+        <circle class="loader-accent" cx="100" cy="10"  r="3.5"/>
+        <circle class="loader-accent" cx="190" cy="100" r="3.5"/>
+        <circle class="loader-accent" cx="100" cy="190" r="3.5"/>
+        <circle class="loader-accent" cx="10"  cy="100" r="3.5"/>
+      </svg>
+      <!-- wrapper div carries the static position offset so GSAP only handles opacity/scale -->
+      <div class="loader-logo-wrap">
+        <img src="assets/images/ssg-logo.png" alt="" class="loader-logo">
+      </div>
+    </div>
+    <div class="loader-wordmark">
+      <p class="loader-name">Al-Salam Scouting Groups</p>
+      <div class="loader-divider"><span></span></div>
+      <p class="loader-since">Since 1977</p>
+    </div>
   </div>
 
   <div id="scroll-progress" aria-hidden="true"></div>
@@ -54,6 +83,7 @@
       <a href="#camps">Expeditions</a>
       <a href="#ceremony">Ceremony</a>
       <a href="#gallery">Gallery</a>
+      <a href="#get-involved" class="nav-contact">Contact Us</a>
     </div>
   </nav>
 
@@ -67,16 +97,16 @@
       <div class="hero-media-wrapper image-mask">
         <div class="hero-slides">
           <div class="hero-slide is-active" aria-hidden="false">
-            <img src="assets/images/new photos/Hero/hero-main.jpg" fetchpriority="high" decoding="async" alt="A scout raises the Al-Salam flag during an outdoor gathering.">
+            <img src="assets/images/optimized-web/Hero/hero-main.jpg" fetchpriority="high" decoding="async" alt="A scout raises the Al-Salam flag during an outdoor gathering.">
           </div>
           <div class="hero-slide" aria-hidden="true">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Hero/HERO_02_Group_Celebration.jpg.JPG" alt="SSG scouts gathered during a group celebration.">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Hero/HERO_02_Group_Celebration.jpg" alt="SSG scouts gathered during a group celebration.">
           </div>
           <div class="hero-slide" aria-hidden="true">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Hero/HERO_04_Leader_With_Scouts.jpg.JPG" alt="An SSG leader with a group of scouts.">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Hero/HERO_04_Leader_With_Scouts.jpg" alt="An SSG leader with a group of scouts.">
           </div>
           <div class="hero-slide" aria-hidden="true">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Hero/HERO_05_Closing_Ceremony_Wide.jpg.jpg" alt="The SSG closing ceremony stage at night.">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Hero/HERO_05_Closing_Ceremony_Wide.jpg" alt="The SSG closing ceremony stage at night.">
           </div>
         </div>
         <div class="hero-shade"></div>
@@ -116,7 +146,7 @@
           <p class="chapter-narrative">A scouting community shaped by discipline, care, and real responsibility. SSG develops young people through leadership, teamwork, and character-building experiences.</p>
         </div>
         <figure class="chapter-hero-image">
-          <img loading="lazy" decoding="async" src="assets/images/new photos/Hero/HERO_04_Leader_With_Scouts.jpg.JPG" alt="Scouts gathered in community action">
+          <img loading="lazy" decoding="async" src="assets/images/optimized-web/Hero/HERO_04_Leader_With_Scouts.jpg" alt="Scouts gathered in community action">
         </figure>
       </header>
       <div class="editorial-split">
@@ -124,7 +154,7 @@
         <!-- Identity -->
         <article class="editorial-split-item reveal">
           <figure class="split-photo">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/About/ABOUT_01_History.jpeg" alt="An archival SSG moment documenting the group's legacy.">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/About/ABOUT_01_History.jpg" alt="An archival SSG moment documenting the group's legacy.">
           </figure>
         </article>
         <article class="editorial-split-item split-text reveal">
@@ -149,7 +179,7 @@
         </article>
         <article class="editorial-split-item reveal">
           <figure class="split-photo">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/About/ABOUT_03_Community_Service.jpg.jpeg" alt="SSG members serving their community.">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/About/ABOUT_03_Community_Service.jpg" alt="SSG members serving their community.">
           </figure>
         </article>
 
@@ -185,26 +215,26 @@
           <p class="chapter-narrative">Growth becomes visible when confidence turns into action. SSG's work is measured in continuity and the courage to participate.</p>
         </div>
         <figure class="chapter-hero-image">
-          <img loading="lazy" decoding="async" src="assets/images/new photos/Hero/HERO_02_Group_Celebration.jpg.JPG" alt="A large scouting crowd gathered during an SSG activity.">
+          <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_08.jpg" alt="The full SSG community gathered — hundreds of scouts and families." style="object-position: center 25%">
         </figure>
       </header>
       <div class="metric-grid">
-        <div class="metric-card reveal" style="background-image: linear-gradient(rgba(13,37,28,0.85), rgba(13,37,28,0.9)), url('assets/images/new photos/Impact/IMPACT_01_Crowd.jpg'); background-size: cover; background-position: center;">
+        <div class="metric-card reveal" style="background-image: linear-gradient(rgba(13,37,28,0.85), rgba(13,37,28,0.9)), url('assets/images/optimized-web/Impact/IMPACT_01_Crowd.jpg'); background-size: cover; background-position: center;">
           <div class="metric-number" data-counter="250">0</div>
           <h3>Active Scouts</h3>
           <p>Building confidence and courage through shared responsibility.</p>
         </div>
-        <div class="metric-card reveal" style="background-image: linear-gradient(rgba(13,37,28,0.85), rgba(13,37,28,0.9)), url('assets/images/new photos/new/Impact_02_Legacy.JPG'); background-size: cover; background-position: center;">
+        <div class="metric-card reveal" style="background-image: linear-gradient(rgba(13,37,28,0.85), rgba(13,37,28,0.9)), url('assets/images/optimized-web/new/Impact_02_Legacy.jpg'); background-size: cover; background-position: center;">
           <div class="metric-number" data-counter="47">0</div>
           <h3>Years of Legacy</h3>
           <p>Continuous operation and community presence since 1977.</p>
         </div>
-        <div class="metric-card reveal" style="background-image: linear-gradient(rgba(13,37,28,0.85), rgba(13,37,28,0.9)), url('assets/images/new photos/new/Impact_03_Stages.jpg'); background-size: cover; background-position: center;">
+        <div class="metric-card reveal" style="background-image: linear-gradient(rgba(13,37,28,0.85), rgba(13,37,28,0.9)), url('assets/images/optimized-web/new/Impact_03_Stages.jpg'); background-size: cover; background-position: center;">
           <div class="metric-number" data-counter="7">0</div>
           <h3>Development Stages</h3>
           <p>Specialized progressive programs from Beavers to Rovers.</p>
         </div>
-        <div class="metric-card reveal" style="background-image: linear-gradient(rgba(13,37,28,0.85), rgba(13,37,28,0.9)), url('assets/images/new photos/Impact/IMPACT_03_Leadership.jpeg'); background-size: cover; background-position: center;">
+        <div class="metric-card reveal" style="background-image: linear-gradient(rgba(13,37,28,0.85), rgba(13,37,28,0.9)), url('assets/images/optimized-web/Impact/IMPACT_03_Leadership.jpg'); background-size: cover; background-position: center;">
           <div class="metric-number" data-counter="5">0</div>
           <h3>Specialized Committees</h3>
           <p>Supporting the vision through dedicated operations and logistics.</p>
@@ -234,7 +264,7 @@
           <p class="chapter-narrative">Partnerships help young people meet the wider professional world. We work with organizations that believe in education and positive social impact.</p>
         </div>
         <figure class="chapter-hero-image">
-          <img loading="lazy" decoding="async" src="assets/images/new photos/new/Partners_01_Access.jpg" alt="Educational and professional access for scouts.">
+          <img loading="lazy" decoding="async" src="assets/images/optimized-web/new/Partners_01_Access.jpg" alt="Educational and professional access for scouts.">
         </figure>
       </header>
       <div class="clean-columns">
@@ -286,12 +316,12 @@
           <p class="chapter-narrative">Programs designed as lived experience, not classroom theory. Scouts learn outdoors, on stage, inside communities, and through visits that connect curiosity with real professional life.</p>
         </div>
         <figure class="chapter-hero-image">
-          <img loading="lazy" decoding="async" src="assets/images/optimized/camp-hurghada-1.jpg" alt="Scouts during an educational visit.">
+          <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_010.jpg" alt="Scouts learning through a group activity." style="object-position: center 35%">
         </figure>
       </header>
       <div class="accordion-gallery">
         <article class="accordion-item reveal">
-          <img loading="lazy" decoding="async" src="assets/images/new photos/Programs/PROGRAM_01_Camping.jpeg" alt="Scouts during a camping program.">
+          <img loading="lazy" decoding="async" src="assets/images/optimized-web/Programs/PROGRAM_01_Camping.jpg" alt="Scouts during a camping program.">
           <div class="accordion-item-title-collapsed">Core Scouting</div>
           <div class="accordion-item-content">
             <span>01</span>
@@ -301,7 +331,7 @@
         </article>
 
         <article class="accordion-item reveal">
-          <img loading="lazy" decoding="async" src="assets/images/new photos/Programs/PROGRAM_05_Educational_Visit.jpg" alt="Scouts during an educational visit.">
+          <img loading="lazy" decoding="async" src="assets/images/optimized-web/Programs/PROGRAM_05_Educational_Visit.jpg" alt="Scouts during an educational visit.">
           <div class="accordion-item-title-collapsed">Exposure</div>
           <div class="accordion-item-content">
             <span>02</span>
@@ -311,7 +341,7 @@
         </article>
 
         <article class="accordion-item reveal">
-          <img loading="lazy" decoding="async" src="assets/images/new photos/Programs/PROGRAM_06_Teamwork.jpg" alt="Scouts completing a teamwork challenge.">
+          <img loading="lazy" decoding="async" src="assets/images/optimized-web/Programs/PROGRAM_06_Teamwork.jpg" alt="Scouts completing a teamwork challenge." style="object-position: center 30%">
           <div class="accordion-item-title-collapsed">Teamwork</div>
           <div class="accordion-item-content">
             <span>03</span>
@@ -321,7 +351,7 @@
         </article>
 
         <article class="accordion-item reveal">
-          <img loading="lazy" decoding="async" src="assets/images/new photos/Programs/PROGRAM_03_Service.jpeg" alt="SSG members participating in a service activity.">
+          <img loading="lazy" decoding="async" src="assets/images/optimized-web/Programs/PROGRAM_03_Service.jpg" alt="SSG members participating in a service activity.">
           <div class="accordion-item-title-collapsed">Service</div>
           <div class="accordion-item-content">
             <span>04</span>
@@ -342,7 +372,7 @@
           <p class="chapter-narrative">A single expedition can teach more about leadership than months of classroom instruction.</p>
         </div>
         <figure class="chapter-hero-image">
-          <img loading="lazy" decoding="async" src="assets/images/new photos/Camps/Camp_01.JPG" alt="Scouts gathered outdoors in nature.">
+          <img loading="lazy" decoding="async" src="assets/images/optimized-web/Camps/Camp_01.jpg" alt="Scouts gathered outdoors in nature.">
         </figure>
       </header>
 
@@ -350,7 +380,7 @@
         <div class="horizontal-journey">
           <article class="journey-card reveal">
             <div class="image-mask">
-              <img loading="lazy" decoding="async" src="assets/images/new photos/Camps/Camp_04.JPG" alt="SSG scouts on a camp expedition by the water." data-parallax>
+              <img loading="lazy" decoding="async" src="assets/images/optimized-web/Camps/Camp_04.jpg" alt="SSG scouts on a camp expedition by the water." data-parallax>
             </div>
             <div class="journey-content">
               <span>01</span>
@@ -360,7 +390,7 @@
           </article>
           <article class="journey-card reveal">
             <div class="image-mask">
-              <img loading="lazy" decoding="async" src="assets/images/new photos/Camps/Camp_08.jpg" alt="A camp activity showing teamwork." data-parallax>
+              <img loading="lazy" decoding="async" src="assets/images/optimized-web/Camps/Camp_08.jpg" alt="A camp activity showing teamwork." data-parallax style="object-position: center 60%">
             </div>
             <div class="journey-content">
               <span>02</span>
@@ -370,7 +400,7 @@
           </article>
           <article class="journey-card reveal">
             <div class="image-mask">
-              <img loading="lazy" decoding="async" src="assets/images/new photos/Camps/Camp_06.jpeg" alt="Scouts gathered during camp." data-parallax>
+              <img loading="lazy" decoding="async" src="assets/images/optimized-web/Camps/Camp_06.jpg" alt="Scouts gathered during camp." data-parallax>
             </div>
             <div class="journey-content">
               <span>03</span>
@@ -380,7 +410,7 @@
           </article>
           <article class="journey-card reveal">
             <div class="image-mask">
-              <img loading="lazy" decoding="async" src="assets/images/new photos/Camps/Camp_02.JPG" alt="Achievement" data-parallax>
+              <img loading="lazy" decoding="async" src="assets/images/optimized-web/Camps/Camp_02.jpg" alt="Achievement" data-parallax>
             </div>
             <div class="journey-content">
               <span>04</span>
@@ -402,7 +432,7 @@
           <p class="chapter-narrative">The closing ceremony gathers scouts, families, leaders, and partners around a year of work. Performance and shared pride become evidence of progress.</p>
         </div>
         <figure class="chapter-hero-image">
-          <img loading="lazy" decoding="async" src="assets/images/new photos/Hero/HERO_05_Closing_Ceremony_Wide.jpg.jpg" alt="The SSG closing ceremony stage at night.">
+          <img loading="lazy" decoding="async" src="assets/images/optimized-web/Hero/HERO_05_Closing_Ceremony_Wide.jpg" alt="The SSG closing ceremony stage at night.">
         </figure>
       </header>
 
@@ -410,7 +440,7 @@
 
         <!-- Full-bleed hero -->
         <div class="cwall-hero reveal">
-          <img loading="lazy" decoding="async" src="assets/images/new photos/Ceremony/CEREMONY_04_Performance.jpg" alt="Performance on Stage">
+          <img loading="lazy" decoding="async" src="assets/images/optimized-web/Ceremony/CEREMONY_04_Performance.jpg" alt="Performance on Stage" style="object-position: center 20%">
           <div class="cwall-hero-caption">
             <span>Performance</span>
             <h3>The Stage Moment</h3>
@@ -421,15 +451,15 @@
         <!-- Row 2: 3 photos, varied widths -->
         <div class="cwall-trio">
           <div class="cwall-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Ceremony/CEREMONY_01_Opening.jpg" alt="Opening Ceremony">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Ceremony/CEREMONY_01_Opening.jpg" alt="Opening Ceremony" style="object-position: center 15%">
             <span>Recognition</span>
           </div>
           <div class="cwall-item cwall-item--wide reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Ceremony/CEREMONY_02_Crowd.jpg" alt="The Ceremony Crowd">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Ceremony/CEREMONY_02_Crowd.jpg" alt="The Ceremony Crowd">
             <span>The Crowd</span>
           </div>
           <div class="cwall-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Ceremony/CEREMONY_03_Awards.jpg" alt="Awards Ceremony">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Ceremony/CEREMONY_03_Awards.jpg" alt="Awards Ceremony" style="object-position: center 10%">
             <span>Awards</span>
           </div>
         </div>
@@ -437,15 +467,15 @@
         <!-- Row 3: 3 photos, different split -->
         <div class="cwall-trio cwall-trio--alt">
           <div class="cwall-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Ceremony/CEREMONY_05_Families.jpg" alt="Families attending the ceremony">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Ceremony/CEREMONY_05_Families.jpg" alt="Families attending the ceremony">
             <span>Families</span>
           </div>
           <div class="cwall-item cwall-item--wide reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Ceremony/CEREMONY_06_GroupPhoto.jpg" alt="Group Photo">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Ceremony/CEREMONY_06_GroupPhoto.jpg" alt="Group Photo">
             <span>Group Photo</span>
           </div>
           <div class="cwall-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Ceremony/CEREMONY_07_Closing.jpg" alt="Closing Ceremony">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Ceremony/CEREMONY_07_Closing.jpg" alt="Closing Ceremony">
             <span>Legacy</span>
           </div>
         </div>
@@ -463,77 +493,77 @@
           <p class="chapter-narrative">The archive is a record of people becoming capable together. Documentation of every journey, challenge, and celebration.</p>
         </div>
         <figure class="chapter-hero-image">
-          <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_02.jpg" alt="Scouting archive">
+          <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_02.jpg" alt="Scouting archive">
         </figure>
       </header>
       <div class="marquee-gallery">
         <!-- Row 1 -->
         <div class="marquee-row">
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_01.JPG" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_01.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_03.JPG" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_03.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_04.JPG" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_04.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_05.jpg" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_05.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_07.jpg" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_07.jpg" alt="Scouting memory">
           </article>
           <!-- Duplicate for infinite scroll -->
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_01.JPG" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_01.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_03.JPG" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_03.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_04.JPG" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_04.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_05.jpg" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_05.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_07.jpg" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_07.jpg" alt="Scouting memory">
           </article>
         </div>
 
         <!-- Row 2 -->
         <div class="marquee-row reverse">
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_08.jpg" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_08.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_09.jpeg" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_09.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_010.jpg" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_010.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_011.jpg" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_011.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_012.jpg" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_012.jpg" alt="Scouting memory">
           </article>
           <!-- Duplicate for infinite scroll -->
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_08.jpg" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_08.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_09.jpeg" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_09.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_010.jpg" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_010.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_011.jpg" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_011.jpg" alt="Scouting memory">
           </article>
           <article class="marquee-item reveal">
-            <img loading="lazy" decoding="async" src="assets/images/new photos/Gallery/Gallery_012.jpg" alt="Scouting memory">
+            <img loading="lazy" decoding="async" src="assets/images/optimized-web/Gallery/Gallery_012.jpg" alt="Scouting memory">
           </article>
         </div>
       </div>
@@ -556,32 +586,50 @@
     <button class="lightbox-nav lightbox-next" type="button" aria-label="Next image">Next</button>
   </div>
 
-  <!-- ════════════════════════ PARTNERSHIP CTA ════════════════════════ -->
-  <section class="partnership-cta">
-    <div class="cta-inner">
-      <span class="chapter-number reveal">Get Involved</span>
-      <h2 class="cta-title reveal">Ready to Invest in the Next Generation?</h2>
-      <p class="cta-text reveal">Partner with Al-Salam Scouting Groups to support youth leadership, community service, and educational access. Your investment shapes confident, capable young people — and leaves a lasting legacy in Cairo's community.</p>
-      <a href="mailto:programscommittee77@gmail.com" class="cta-button reveal">Start a Conversation</a>
-      <div class="cta-contact-strip reveal">
-        <div class="cta-contact-item">
-          <span>Email</span>
-          <a href="mailto:programscommittee77@gmail.com">programscommittee77@gmail.com</a>
+  <!-- ════════════════════════ GET INVOLVED ════════════════════════ -->
+  <section id="get-involved" class="contact-chapter">
+
+    <!-- Left: photo -->
+    <div class="contact-photo">
+      <img loading="lazy" decoding="async"
+           src="assets/images/optimized-web/Hero/HERO_02_Group_Celebration.jpg"
+           alt="SSG scouts gathered during a group celebration">
+      <div class="contact-photo-fade"></div>
+    </div>
+
+    <!-- Right: content -->
+    <div class="contact-content">
+      <div class="contact-bg-word" aria-hidden="true">47</div>
+      <div class="contact-inner">
+
+        <span class="contact-kicker reveal">Get Involved</span>
+
+        <h2 class="contact-headline reveal">
+          Partner<br>With<br>Al&#8209;Salam<br>Scouting<br>Groups.
+        </h2>
+
+        <p class="contact-body reveal">Your organization can support youth leadership through educational visits, event partnerships, or community initiatives. Every partnership shapes confident young people — and leaves a lasting legacy.</p>
+
+        <a href="mailto:programscommittee77@gmail.com" class="cta-button reveal">Start a Conversation</a>
+
+        <div class="contact-details reveal">
+          <div class="contact-detail">
+            <span>Email</span>
+            <a href="mailto:programscommittee77@gmail.com">programscommittee77@gmail.com</a>
+          </div>
+          <div class="contact-detail">
+            <span>Follow</span>
+            <a href="https://www.instagram.com/ssg_elrehab_club" target="_blank" rel="noreferrer">@ssg_elrehab_club</a>
+          </div>
+          <div class="contact-detail">
+            <span>Location</span>
+            <a href="https://maps.app.goo.gl/Bu4qUUBh5yRTmnxA7" target="_blank" rel="noreferrer">Rehab Sporting Club, Cairo</a>
+          </div>
         </div>
-        <div class="cta-contact-item">
-          <span>Location</span>
-          <p>Rehab Sporting Club, Cairo, Egypt</p>
-        </div>
-        <div class="cta-contact-item">
-          <span>Follow Us</span>
-          <a href="https://www.instagram.com/ssg_elrehab_club" target="_blank" rel="noreferrer">@ssg_elrehab_club</a>
-        </div>
-        <div class="cta-contact-item">
-          <span>Established</span>
-          <p>Since 1977</p>
-        </div>
+
       </div>
     </div>
+
   </section>
 
   <footer id="contact" class="site-footer">

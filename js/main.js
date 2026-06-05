@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const progress = document.getElementById('scroll-progress');
   const loader = document.getElementById('loading-screen');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
   const hasGsap = window.gsap && window.ScrollTrigger;
 
   const imageMeta = [
@@ -41,12 +42,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (hasGsap && !reduceMotion) {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-    gsap.set('.loader-rule span', { scaleX: 0 });
+
+    // Set initial states
+    gsap.set('.loader-ring-fill', { strokeDashoffset: 427.3 });
+    gsap.set('.loader-accent', { opacity: 0, scale: 0, transformOrigin: '50% 50%' });
+    gsap.set('.loader-logo', { opacity: 0, scale: 0.88 });
+    gsap.set(['.loader-name', '.loader-since'], { opacity: 0, y: 10 });
+    gsap.set('.loader-divider span', { scaleX: 0 });
+
     gsap.timeline({ onComplete: finishLoading })
-      .to('.loader-rule span', { scaleX: 1, duration: 1.1, ease: 'power3.inOut' })
-      .to('.loader-logo', { opacity: 0, y: -10, duration: 0.3, ease: 'power2.in' }, '+=0.1')
-      .to('#loading-screen p', { opacity: 0, duration: 0.2 }, '<')
-      .to('#loading-screen', { opacity: 0, duration: 0.5, ease: 'power2.out' });
+      // Ring draws itself
+      .to('.loader-ring-fill', { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut' })
+      // Logo fades in while ring is drawing
+      .to('.loader-logo', { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.4)' }, '-=1.1')
+      // Cardinal dots pop in near end of ring
+      .to('.loader-accent', { opacity: 1, scale: 1, duration: 0.25, stagger: 0.07, ease: 'back.out(2)' }, '-=0.45')
+      // Divider line sweeps across
+      .to('.loader-divider span', { scaleX: 1, duration: 0.45, ease: 'power3.inOut' }, '-=0.1')
+      // Text reveals
+      .to('.loader-name', { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }, '-=0.25')
+      .to('.loader-since', { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }, '-=0.15')
+      // Whole screen fades out
+      .to('#loading-screen', { opacity: 0, duration: 0.6, ease: 'power2.out' }, '+=0.35');
   } else {
     finishLoading();
   }
@@ -213,21 +230,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // ─── GSAP animations ───────────────────────────────────────────────────────
   if (hasGsap && !reduceMotion) {
 
-    // 1. Lenis smooth scroll — use gsap.ticker for proper integration
-    if (typeof Lenis !== 'undefined') {
+    // 1. Lenis smooth scroll — desktop only (native scroll is faster on touch)
+    if (typeof Lenis !== 'undefined' && !isTouch) {
       const lenis = new Lenis({
         lerp: 0.08,
         smoothWheel: true,
-        syncTouch: false  // disable on touch to prevent lag on mobile
+        syncTouch: false
       });
 
-      // Correct integration: gsap.ticker drives Lenis, Lenis drives ScrollTrigger
       gsap.ticker.add((time) => {
         lenis.raf(time * 1000);
       });
-      gsap.ticker.lagSmoothing(0); // prevent GSAP from skipping frames after tab switch
-
-      ScrollTrigger.scrollerProxy && ScrollTrigger.refresh();
+      gsap.ticker.lagSmoothing(0);
     }
 
     // 2. SplitType text reveals (hero only for performance)
@@ -252,17 +266,19 @@ document.addEventListener('DOMContentLoaded', () => {
       .fromTo('.hero-deck', { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=0.7')
       .fromTo('.hero-caption', { opacity: 0 }, { opacity: 1, duration: 0.7, ease: 'power3.out' }, '-=0.6');
 
-    // 4. Hero slides parallax — translate the whole stack, not individual imgs
-    gsap.to('.hero-slides', {
-      yPercent: 18,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1
-      }
-    });
+    // 4. Hero parallax — desktop only (causes jank on mobile)
+    if (!isTouch) {
+      gsap.to('.hero-slides', {
+        yPercent: 18,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1
+        }
+      });
+    }
 
     // 5. Scroll reveals via IntersectionObserver (CSS transitions, composited)
     const revealObserver = new IntersectionObserver(entries => {
@@ -311,24 +327,26 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 8. Horizontal journey — native scroll with lightweight parallax
-    const horizontalJourney = document.querySelector('.horizontal-journey');
-    if (horizontalJourney) {
-      const parallaxImages = gsap.utils.toArray('.horizontal-journey [data-parallax]');
-      parallaxImages.forEach(img => {
-        gsap.to(img, {
-          x: '12%',
-          ease: 'none',
-          scrollTrigger: {
-            scroller: horizontalJourney,
-            horizontal: true,
-            trigger: img.closest('.journey-card'),
-            start: 'left right',
-            end: 'right left',
-            scrub: true
-          }
+    // 8. Horizontal journey parallax — desktop only
+    if (!isTouch) {
+      const horizontalJourney = document.querySelector('.horizontal-journey');
+      if (horizontalJourney) {
+        const parallaxImages = gsap.utils.toArray('.horizontal-journey [data-parallax]');
+        parallaxImages.forEach(img => {
+          gsap.to(img, {
+            x: '12%',
+            ease: 'none',
+            scrollTrigger: {
+              scroller: horizontalJourney,
+              horizontal: true,
+              trigger: img.closest('.journey-card'),
+              start: 'left right',
+              end: 'right left',
+              scrub: true
+            }
+          });
         });
-      });
+      }
     }
 
   } else {
