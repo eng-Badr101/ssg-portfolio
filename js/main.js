@@ -481,10 +481,6 @@ document.addEventListener('DOMContentLoaded', () => {
     start();
 
     const heroEl = document.getElementById('hero');
-    if (heroEl) {
-      heroEl.addEventListener('mouseenter', stop,  { passive: true });
-      heroEl.addEventListener('mouseleave', start, { passive: true });
-    }
 
     dots.forEach((dot, i) => {
       dot.addEventListener('click', () => { stop(); goTo(i); start(); });
