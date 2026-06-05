@@ -2216,17 +2216,7 @@ figcaption {
     font-size: 1rem;
   }
 
-  /* Lang toggle inside mobile nav */
-  .lang-toggle {
-    justify-self: start;
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
-  }
-
-  /* RTL: lang toggle aligns right in mobile menu */
-  html[lang="ar"] .lang-toggle {
-    justify-self: end;
-  }
+  /* Desktop lang toggle (inside nav-links) hidden with the dropdown on mobile */
 
   .editorial-grid,
   .bento-programs,
@@ -3244,6 +3234,12 @@ body.js-enabled .reveal:not(h1, h2).is-revealed {
 
 .lang-toggle::after { display: none !important; }
 
+/* Mobile-only button — hidden above 860px, shown below */
+.lang-toggle--mobile { display: none; }
+@media (max-width: 860px) {
+  .lang-toggle--mobile { display: inline-flex; }
+}
+
 /* =================================================
    ARABIC / RTL OVERRIDES
    ================================================= */
@@ -3252,6 +3248,21 @@ body.js-enabled .reveal:not(h1, h2).is-revealed {
 :root[lang="ar"] {
   --body:    'Cairo', sans-serif;
   --display: 'Cairo', sans-serif;
+}
+
+/* Lock ALL layout containers to LTR so nothing shifts left.
+   Text elements restore RTL individually via the overrides below. */
+html[lang="ar"] body,
+html[lang="ar"] main,
+html[lang="ar"] section,
+html[lang="ar"] header,
+html[lang="ar"] footer,
+html[lang="ar"] .chapter-divider,
+html[lang="ar"] .chapter-hero-image,
+html[lang="ar"] .testimonial-strip,
+html[lang="ar"] .contact-chapter {
+  direction: ltr;
+  overflow-x: hidden;
 }
 
 /* All text uses Cairo in Arabic mode */
@@ -3296,11 +3307,7 @@ html[lang="ar"] .chapter-header-content {
   text-align: right;
 }
 
-html[lang="ar"] .chapter-bg-word {
-  right: auto;
-  left: 0;
-  text-align: left;
-}
+/* chapter-bg-word stays centred (left:50% + translate works in both directions) */
 
 /* Editorial split: mirror the grid for RTL */
 html[lang="ar"] .editorial-split {
@@ -3410,6 +3417,11 @@ html[lang="ar"] .site-footer {
   text-align: right;
 }
 
+/* Nav in RTL: logo goes right, links go left */
+html[lang="ar"] .site-nav {
+  direction: rtl;
+}
+
 /* Nav links in RTL */
 html[lang="ar"] .nav-links {
   direction: rtl;
@@ -3459,10 +3471,7 @@ html {
    ================================================= */
 
 @media (max-width: 860px) {
-  /* Mobile nav in RTL: links right-aligned, hamburger on left */
-  html[lang="ar"] .site-nav {
-    flex-direction: row-reverse;
-  }
+  /* Mobile nav in RTL: direction:rtl on .site-nav handles logo/hamburger positions */
   html[lang="ar"] .nav-links {
     text-align: right;
   }

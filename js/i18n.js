@@ -295,7 +295,7 @@ const TRANSLATIONS = {
 
     // Contact
     'contact-kicker':   'انضم إلينا',
-    'contact-headline': 'كن شريكاً<br>لمجموعات<br>سكاوت<br>السلام.',
+    'contact-headline': 'كن شريكاً<br>لمجموعات<br>السلام<br>الكشفية.',
     'contact-body':     'يمكن لمؤسستك دعم قيادة الشباب من خلال الزيارات التعليمية أو شراكات الفعاليات أو المبادرات المجتمعية. كل شراكة تصنع شباباً واثقاً — وتترك إرثاً دائماً.',
     'contact-cta':      'ابدأ المحادثة',
     'contact-email':    'البريد',
@@ -342,16 +342,20 @@ function initI18n() {
   try { saved = localStorage.getItem('ssg-lang') || 'en'; } catch (_) {}
   if (!TRANSLATIONS[saved]) saved = 'en';
 
-  const btn = document.getElementById('lang-toggle');
-  if (!btn) return;
+  const btn       = document.getElementById('lang-toggle');
+  const btnMobile = document.getElementById('lang-toggle-mobile');
+  if (!btn && !btnMobile) return;
 
   // Apply on load (if Arabic was saved)
   if (saved === 'ar') applyLanguage('ar');
 
-  btn.addEventListener('click', () => {
+  function handleToggle() {
     const current = document.documentElement.getAttribute('data-lang') || 'en';
     applyLanguage(current === 'en' ? 'ar' : 'en');
-  });
+  }
+
+  if (btn)       btn.addEventListener('click', handleToggle);
+  if (btnMobile) btnMobile.addEventListener('click', handleToggle);
 }
 
 document.addEventListener('DOMContentLoaded', initI18n);
