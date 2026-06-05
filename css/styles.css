@@ -3290,21 +3290,38 @@ html[lang="ar"] .scouts-trail {
 /* Hero content: right-align text in RTL */
 html[lang="ar"] .hero-content {
   text-align: right;
+  direction: rtl;
 }
 
 html[lang="ar"] .hero-deck-wrapper {
   direction: rtl;
 }
 
+/* Hero deck: flip border and padding to match RTL column order */
+html[lang="ar"] .hero-deck {
+  border-left: none;
+  border-right: 1px solid rgba(255, 253, 248, 0.14);
+  padding-left: 0;
+  padding-right: 3rem;
+}
+
+/* Text-link / solid-link: flip the trailing line for RTL hover */
+html[lang="ar"] .text-link::after,
+html[lang="ar"] .solid-link::after {
+  transform-origin: right;
+}
+
 html[lang="ar"] .hero-caption {
   left: auto;
   right: var(--gutter);
   text-align: right;
+  direction: rtl;
 }
 
 /* Chapter header: flip text alignment */
 html[lang="ar"] .chapter-header-content {
   text-align: right;
+  direction: rtl;
 }
 
 /* chapter-bg-word stays centred (left:50% + translate works in both directions) */
@@ -3316,27 +3333,41 @@ html[lang="ar"] .editorial-split {
 
 html[lang="ar"] .split-text {
   text-align: right;
+  direction: rtl;
 }
 
 /* About statement quote */
 html[lang="ar"] .about-statement {
   text-align: right;
+  direction: rtl;
 }
 
 /* About pillars */
 html[lang="ar"] .about-pillar {
   text-align: right;
+  direction: rtl;
 }
 
 /* Metric cards */
 html[lang="ar"] .metric-card {
   text-align: right;
+  direction: rtl;
 }
 
 /* Testimonial */
+html[lang="ar"] .testimonial-inner {
+  direction: rtl;
+}
+
+html[lang="ar"] .testimonial-inner blockquote {
+  margin-left: auto;  /* push max-width block to the right */
+  margin-right: 0;
+}
+
 html[lang="ar"] .testimonial-quote,
 html[lang="ar"] .testimonial-inner cite {
   text-align: right;
+  direction: rtl;
 }
 
 /* Partners columns */
@@ -3345,6 +3376,7 @@ html[lang="ar"] .clean-columns {
 }
 html[lang="ar"] .clean-column-item {
   text-align: right;
+  direction: rtl;
 }
 
 /* Programs accordion — keep flex layout LTR, only flip text */
@@ -3355,6 +3387,10 @@ html[lang="ar"] .accordion-item-content,
 html[lang="ar"] .accordion-item-title-collapsed {
   direction: rtl;
   text-align: right;
+}
+
+html[lang="ar"] .accordion-item-content h3 {
+  line-height: 1.3;
 }
 
 /* Expeditions horizontal journey — keep scroll layout LTR, only flip text */
@@ -3376,11 +3412,28 @@ html[lang="ar"] #ceremony {
 html[lang="ar"] #ceremony .chapter-header-content,
 html[lang="ar"] #ceremony .chapter-number,
 html[lang="ar"] #ceremony .chapter-title,
-html[lang="ar"] #ceremony .chapter-narrative,
-html[lang="ar"] .cwall-hero-caption,
+html[lang="ar"] #ceremony .chapter-narrative {
+  direction: rtl;
+  text-align: right;
+}
+
+html[lang="ar"] .cwall-hero-caption {
+  direction: rtl;
+  text-align: right;
+  left: auto;   /* un-anchor from left */
+  right: 0;     /* anchor to right edge instead */
+}
+
+/* Tile labels: flip from bottom-left to bottom-right */
 html[lang="ar"] .cwall-item > span {
   direction: rtl;
   text-align: right;
+  left: auto;
+  right: 1.5rem;
+}
+
+html[lang="ar"] .cwall-hero-caption h3 {
+  line-height: 1.3;
 }
 
 /* Contact section */
@@ -3393,6 +3446,12 @@ html[lang="ar"] .contact-body {
 
 html[lang="ar"] .contact-inner {
   text-align: right;
+  direction: rtl; /* fixes period/dash position — BiDi needs RTL context */
+}
+
+/* Kicker: flip line to appear after text in RTL */
+html[lang="ar"] .contact-kicker {
+  flex-direction: row-reverse;
 }
 
 html[lang="ar"] .contact-details {
@@ -3406,9 +3465,18 @@ html[lang="ar"] .contact-detail {
   padding-right: 1.5rem;
 }
 
+html[lang="ar"] .contact-detail:not(:first-child) {
+  padding-left: 0;
+}
+
 html[lang="ar"] .contact-detail:first-child {
   border-right: none;
   padding-right: 0;
+}
+
+/* CTA button: flip arrow direction in Arabic */
+html[lang="ar"] .cta-button::after {
+  content: "←";
 }
 
 /* Footer */
@@ -3430,6 +3498,34 @@ html[lang="ar"] .nav-links {
 /* Loader wordmark */
 html[lang="ar"] .loader-wordmark {
   direction: rtl;
+}
+
+/* Lightbox caption — right-align in Arabic */
+html[lang="ar"] .lightbox-stage figcaption {
+  text-align: right;
+  direction: rtl;
+  margin-left: auto;  /* push the capped-width box to the right edge */
+  margin-right: 0;
+}
+
+html[lang="ar"] .lightbox-count,
+html[lang="ar"] .lightbox-stage strong,
+html[lang="ar"] .lightbox-stage em,
+html[lang="ar"] .lightbox-stage p {
+  text-align: right;
+}
+
+/* Cairo needs more vertical space — fix overlap between title and subtitle */
+html[lang="ar"] .lightbox-stage strong {
+  line-height: 1.3;
+}
+
+html[lang="ar"] .lightbox-stage em {
+  margin-top: 0.75rem;
+}
+
+html[lang="ar"] .lightbox-stage p {
+  max-width: 100%; /* let paragraph fill figcaption width in Arabic */
 }
 
 /* Headline size adjustment for Arabic — Cairo needs more line-height */
